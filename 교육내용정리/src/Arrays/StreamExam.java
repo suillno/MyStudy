@@ -14,7 +14,7 @@ public class StreamExam {
 		
 		int ln = Arrays.stream(list2)
 				.sum();
-		
+		// 수정테스트
 		
 		
 	}
