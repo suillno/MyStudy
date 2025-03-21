@@ -16,7 +16,6 @@ public class StreamExam {
 				.sum();
 		// 수정테스트
 		
-		
 	}
 
 }
