@@ -12,9 +12,10 @@ public class StreamExam {
 		List<Integer> list = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6));
 		int[] list2 = {1,2,3,4,5,6};
 		
-		int ln = Arrays.stream(list2)
-				.sum();
-		// 수정테스트
+		int ln = Arrays.stream(list2).sum();
+
+		
+		
 		
 	}
 
