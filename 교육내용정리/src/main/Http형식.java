@@ -100,7 +100,6 @@ public class Http형식 {
 			 
 			for(int i = 0; i < jsonArray.length(); i++) { // 
 				JSONObject obj = jsonArray.getJSONObject(i);
-				
 				String body = obj.getString("body") != null ? obj.getString("body") : ""; // null일때 빈값을 가지는 방어구문
 				if(body.contains("officiis")) {
 					fileredList.add(obj);
