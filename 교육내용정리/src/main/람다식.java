@@ -47,28 +47,26 @@ public class 람다식 {
 		
 		int nums2 = Arrays.stream(nums).sum();
 		Double nums3 = Arrays.stream(nums).average().orElse(0.0);
-		int nums2 = Arrays.stream(nums).
 		
 		
 		// 1, 파라미터 없는 람다식
-		Runnable runnaable = () -> System.out.println("출력");
+//		Runnable runnaable = () -> System.out.println("출력");
 		
 		// 2, 파라미터가 1개일때 람다식
-		Consumer<String> consumer = s -> System.out.println("출력");
+//		Consumer<String> consumer = s -> System.out.println("출력");
 		
 		// 3, 파라미터가 여러개일때 람다식
-		BinaryOperator<Integer> add = (a,b) -> a + b;
+//		BinaryOperator<Integer> add = (a,b) -> a + b;
 		
 		// 4. 여러 문장이있는 람다식
-		Function<Integer, Integer> f = x -> {
-			int r = x + 1;
-			return r;
-		};
+//		Function<Integer, Integer> f = x -> {
+//			int r = x + 1;
+//			return r;
+//		};
 		
 		// 함수형 인터페이스
-		Function<Integer, Integer> ff = x -> x*x;
+//		Function<Integer, Integer> ff = x -> x*x;
 		
-		System.out.println(ff.apply(15));
 	}
 
 }

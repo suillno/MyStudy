@@ -15,7 +15,7 @@ public class 파일입력 {
 
 		// FileOutputStream : 지정경로에 파일생성.
 		FileOutputStream output = new FileOutputStream("C:/java/out.txt");
-
+		
 		// \r\n 줄바꿈 문자
 		// 유닉스 계열에서는 \n만 있어도 된다.
 		// 윈도우는 \r\n으로 작성해야 개행된다.
