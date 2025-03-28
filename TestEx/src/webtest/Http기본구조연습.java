@@ -1,80 +1,40 @@
 package webtest;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class Http기본구조연습 {
 
 	public static void main(String[] args) {
-		// 요청할 URL
-		String targetUrl = "https://jsonplaceholder.typicode.com/posts";
-		
-		// 1, URL객체 생성
-		try {
-			URL url = new URL(targetUrl);
-		
-		// 2, HttpURLConnection 객체 생성 및 설정
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();	
-		
-		// Get 형태로 Request 선언
-		conn.setRequestMethod("GET");
+		String tergetUrl = "https://jsonplaceholder.typicode.com/posts"; // 목표 url 변수 등록
+		try { // 오류처리
+			URL url = new URL(tergetUrl); // url 객체 생성
 			
-		// 3, 응답 코드 확인
-		int reponseCode = conn.getResponseCode();
-		
-		// 4, 응답이 성공이면 데이터 읽기 (아래 두가지 모두 작동하는 코드
-//		if(reponseCode == 200) {}
-		if(reponseCode == HttpURLConnection.HTTP_OK) {
-			/**
-			 * conn.getInputStream() → 서버 응답을 받아오고, 
-			 * InputStreamReader → 바이트를 문자로 바꾸고
-			 * BufferedReader → 한 줄씩 읽을 수 있게 도와줌
-			 */
-			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream())); // 
-			String input;
-			StringBuilder inputAdd = new StringBuilder();
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // Http 요청을 보내기위한 연결객체 생성
 			
-			while((input = in.readLine()) != null) {
-				inputAdd.append(input);
+			conn.setRequestMethod("GET"); // Http 요청방식을 GET 방식으로 처리
+			
+			int response = conn.getResponseCode(); // 서버로부터 받은 코드를 int형태로 저장
+			
+			if(response == HttpURLConnection.HTTP_OK) { // Http 커넥션 코드 200 리턴받으면 이후의 코드 진행
+			BufferedReader reder = new BufferedReader(new InputStreamReader(conn.getInputStream())); // conn에서 inputStream(서버의 응답)을 바이트형태로 읽고
+																									 // (InputStreamReader)을 통해 문자로 저장 저장한 값을 (BufferedReader)로 줄단위로 불러오기
+			String requst;
+			
+			
+			
+			
+			
 			}
-			in.close();
-		
-		
-		// 5, 응답 출력
-		JSONArray jArray = new JSONArray(inputAdd.toString());
-		HashMap<String, Object> hMap = new HashMap<String, Object>();
-		List<HashMap<String, Object>> list = new ArrayList<>();
-		
-		for(int i = 0; i < jArray.length(); i++) {
-			HashMap<String, Object> map = new HashMap<String, Object>();
-			JSONObject obj = jArray.getJSONObject(i);
-			map.put("in", obj.get("in"));
-			map.put("userId", obj.get("userId"));
-			map.put("body", obj.get("body"));
-			map.put("title", obj.get("title"));
-			
-			list.add(map);	
-			System.out.println(list);
-		}
-		
-		
-		}
 		} catch (Exception e) {
-			e.printStackTrace(); // err메세지 출력
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		// 6, 연결 종료
-
+		
 	}
 
 }
