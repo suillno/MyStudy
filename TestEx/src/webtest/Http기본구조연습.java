@@ -17,12 +17,19 @@ public class Http기본구조연습 {
 			
 			conn.setRequestMethod("GET"); // Http 요청방식을 GET 방식으로 처리
 			
-			int response = conn.getResponseCode(); // 서버로부터 받은 코드를 int형태로 저장
+			int responseCode = conn.getResponseCode(); // 서버로부터 받은 코드를 int형태로 저장
 			
-			if(response == HttpURLConnection.HTTP_OK) { // Http 커넥션 코드 200 리턴받으면 이후의 코드 진행
-			BufferedReader reder = new BufferedReader(new InputStreamReader(conn.getInputStream())); // conn에서 inputStream(서버의 응답)을 바이트형태로 읽고
+			if(responseCode == HttpURLConnection.HTTP_OK) { // Http 커넥션 코드 200 리턴받으면 이후의 코드 진행
+			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream())); // conn에서 inputStream(서버의 응답)을 바이트형태로 읽고
 																									 // (InputStreamReader)을 통해 문자로 저장 저장한 값을 (BufferedReader)로 줄단위로 불러오기
-			String requst;
+			String inputLine;
+			StringBuilder response = new StringBuilder();
+			
+			while ( (inputLine = in.readLine() ) != null) { // 문자 합치기
+				response.append(inputLine);
+			}
+			in.close(); // 스트림 닫기
+			
 			
 			
 			
