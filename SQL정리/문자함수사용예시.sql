@@ -19,7 +19,7 @@ FROM EMP
 ;
 
 SELECT  
-INSTR('HELLO ORACLE', 'L') -- 문자에 포함된 숫자 세기
+INSTR('HELLO ORACLE', 'L') -- 문자에 포함된 숫자 세기, 포함문자 확인
 , INSTR('HELLO ORACLE', 'L', 5)
 , INSTR('HELLO ORACLE', 'L', 2, 2)
 FROM EMP;
