@@ -1,0 +1,21 @@
+-- 함수생성
+CREATE OR REPLACE FUNCTION FUNC_AFTERTAX (SAL IN NUMBER)
+RETURN NUMBER
+IS 
+    tax NUMBER := 0.05;
+BEGIN
+    RETURN (ROUND(SAL - (SAL*tax)));
+END FUNC_AFTERTAX;
+/
+
+-- 함수 호출
+DECLARE 
+    aftertax NUMBER; -- 변수 선언
+BEGIN
+    aftertax := FUNC_AFTERTAX(3000); -- 변수에 생성한 함수 결과 담기
+    DBMS_OUTPUT.PUT_LINE(aftertax);
+END;
+/
+
+-- 함수 호출2
+SELECT FUNC_AFTERTAX(3000) AS A FROM DUAL;

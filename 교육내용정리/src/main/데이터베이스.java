@@ -14,12 +14,15 @@ public class 데이터베이스 {
 		 * 접속 : sqlplus sys/oracle as sysdba
 		 * 아이디생성 조건 변경: alter session set "_oracle_script"=true;
 		 * 아이디생성 : create user scott identified by tiger default tablespace users quota unlimited on users;
-		 * 권한부여 :  grant create session, create table to scott;
-		 * 아이디 접속 :  conn scott/tiger ==> conn 아이디/패스워드
+		 * 권한부여 :  grant resource, create session, create table to scott; // 리소스, 권한부여, 태이블 권한 부여
+		 * 권한부여해제 : revoke resource, create table from khuser;
+		 * 아이디 접속 :  sqlplus scott/tiger ==> conn 아이디/패스워드
 		 * 세션변경 : alter session set "_oracle_script"=true;
 		 * 			alter session set nls_date_language='american';
 		 * 			alter session set nls_date_format='dd-MON-rr';
 		 * 파일연결 : @c:\scott.sql = > @경로\파일명
+		 * 비밀번호 변경 : alter user khuser identified by 변경할비밀번호;
+		 * 사용자 삭제 : drop user khuser; // 계정내 태이블 존재시 삭제 불가능 cascade; 사용시 태이블 상관없이 삭제
 		 * 연결확인 : desc emp; / desc dept; / desc salgrade;
 		 */
 		
