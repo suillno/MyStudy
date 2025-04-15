@@ -14,6 +14,11 @@ import vo.EmpVO;
 
 public class main {
 
+	private static final String URL = "jdbc:oracle:thin:@localhost:1521/xe";
+	private static final String ID = "scott";
+	private static final String PW = "tiger";
+	private static Connection conn = null;
+	
 	public static void main(String[] args) {
 		/**
 		 * 1. DB 연결 설정 - EmpDAO.connect(); 2. 객채 생성 3. SELECT 해보기 - EmpDAO.getQuery();
@@ -32,7 +37,24 @@ public class main {
 		 * // 커밋 // conn.commit();
 		 */
 
-		System.out.println(ShopDAO.searchUser("kim"));
+
+		
+	
+			try { 
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection(URL, ID, PW);
+				System.out.println("접속성공");
+			} catch (ClassNotFoundException e) {
+				System.out.println("드라이버를 접속 실패 : " + e.getMessage());
+				e.printStackTrace();
+			} catch (SQLException e) {
+				System.out.println("DB 접속 실패 : " + e.getMessage());
+				e.printStackTrace();
+			}
+		
+		
+		
+		System.out.println(ShopDAO.searchUser(conn,"kim"));
 		
 		
 	}

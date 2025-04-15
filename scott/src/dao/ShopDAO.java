@@ -33,7 +33,7 @@ public class ShopDAO {
 		}
 	}
 	
-public static ShopMember searchUser(String memberId) {
+public static ShopMember searchUser(Connection conn, String memberId) {
 	connect();
 	PreparedStatement pstmt = null;
 	ResultSet rset = null;
