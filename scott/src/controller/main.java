@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dao.EmpDAO;
+import dao.ShopDAO;
 import vo.EmpVO;
 
 public class main {
@@ -31,12 +32,8 @@ public class main {
 		 * // 커밋 // conn.commit();
 		 */
 
-
-		for (EmpVO item : EmpDAO.getQuery()) {
-			System.out.println(item);
-		}
-
-		EmpDAO.setQuery();
-
+		System.out.println(ShopDAO.searchUser("kim"));
+		
+		
 	}
 }
