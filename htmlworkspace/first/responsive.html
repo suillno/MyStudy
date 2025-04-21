@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>반응형</title>
+    <style>
+      body {
+        background-color: green;
+      }
+      /* 모바일 디바이스 환경시 표기화면 */
+      /* 최소 픽셀이 400px 이하가되면 빨간색으로 표기 */
+      @media (min-width: 400px) {
+        body {
+          background-color: red;
+        }
+      }
+      /* 450px ~ 550px 사이가 되면 파란색으로 표기기 */
+      @media (min-width: 450px) and (max-width: 550px) {
+        body {
+          background-color: blue;
+        }
+      }
+      @media (max-width: 479px) {
+        /* 모바일 */
+      }
+      @media (min-width: 480px) and (max-width: 767px) {
+        /* 테블릿 or 모바일 가로 */
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        /* 테블릿 가로 */
+      }
+      @media (min-width: 1024px) {
+        /* 데스크탑 */
+      }
+      /* 반응형웹 기준
+        모바일 : 479px 이하
+        테블릿 : 480px ~ 767px 모바일의 가로 또는 테블릿의 세로
+        테블릿의 가로 : 768px ~ 1023px
+        대스크탑 : 1024px 이상 */
+    </style>
+  </head>
+  <body></body>
+</html>

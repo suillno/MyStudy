@@ -1,0 +1,113 @@
+/* 기본 설정 */
+body {
+  margin: 0;
+  font-family: "Jua", sans-serif;
+}
+
+/* 가운데 정렬용 wrapper */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* 상단 고정바 스타일 */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0%;
+  right: 0%;
+  height: 60px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+}
+
+/* 상단바 안의 내용 정렬 */
+.top-bar .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* 로고 */
+.logo-box {
+  font-size: 24px;
+  color: #ff2e63;
+  font-weight: bold;
+}
+
+/* 로그인 버튼 */
+.login-form button {
+  padding: 8px 10px;
+  background-color: #ff2e63;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* 본문 전체 레이아웃 (사이드바 + 메인) */
+.container {
+  display: flex;
+  margin-top: 60px; /* 상단바 높이만큼 여백 */
+}
+
+/* 사이드바 */
+.sidebar {
+  width: 120px;
+  background-color: #f8f9fa;
+  padding: 0px;
+  border-right: 1px solid #ddd;
+  min-height: 100vh;
+}
+
+/* 사이드바 제목 */
+.sidebar h4 {
+  margin-top: 30px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* 사이드바 목록 */
+.sidebar p {
+  margin: 6px 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+}
+
+.sidebar a:hover {
+  color: #ff2e63;
+}
+
+/* 본문 */
+.main-content {
+  flex: 1;
+  padding: 30px;
+  background-color: #eee;
+}
+
+/* 반응형 모바일 대응 */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 외부 스타일시트 : css파일 링크로 불러오기 -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- 폰트 링크 연결 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gamja+Flower&family=Orbit&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <style>
+      .news {
+        /* text-align :  택스트 줄정렬
+          word-break: keep-all; 줄바꿈시 단어가 짤리지 않게 개행
+          line-height : 줄간격격
+          그림자 box-shadow: 가로 세로 번짐 색상상;
+          letter-spacing : 글자 간격 조정*/
+        word-break: keep-all;
+        line-height: 1.2;
+        width: 400px;
+        font-size: 0.8rem;
+        letter-spacing: -1px;
+      }
+      h2 {
+        color: blue;
+      }
+      /* 지정한 class명을 불러와 스타일 지정 */
+      .joinTitle {
+        color: red;
+      }
+      .bg {
+        background-color: blanchedalmond;
+      }
+      /*  */
+      #loginText {
+        font-size: 40px;
+      }
+      /* 여러개 적용시 , 로 구분
+        줄표기
+        border : 줄크기 선종류 색상*/
+      /* * {
+
+        border: 1px solid red;
+      } */
+      .label {
+        width: 90px;
+        display: inline-block;
+        font-size: 16px;
+      }
+      legend {
+        display: none;
+      }
+      .input {
+        width: 200px;
+        height: 20px;
+        /* 배경 */
+        background-color: #f7f1e3;
+        /* 가장자리 */
+        border: 1px solid #34ace0;
+        /* 밑줄 */
+        border-bottom: 1px solid red;
+        /* 가장자리 둥글게 */
+        border-radius: 5px;
+      }
+      .row {
+        /* 간격 추가 시계방향 상우하좌*/
+        margin: 5px 20px;
+      }
+      /* 아이디 패스워드 입력테두리 크기
+        auto 자동정렬, 양쪽자동정렬시 가운데정렬*/
+      .form {
+        width: 400px;
+        /* margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px; */
+        margin: 50px auto;
+        padding: 40px;
+      }
+      .padding {
+        padding: 20px;
+      }
+      .button {
+        width: 90%;
+        background-color: aqua;
+        color: black;
+        border: 0;
+        font-size: 14px;
+      }
+      /* px : 픽셀
+        % : 부모요소에 비례한 크기 100%시 부모요소와 동일
+        em : 부모요소에 비례한 크기 1em 부모요소와 동일
+        rem : root요소에 비례한 크기 1rem 부모요소와 동일 (폰트사이즈시 사용)
+        vw : viewport width 화면을 기준으로 퍼센트 100vw
+        vh : viewport height 화면의 기준으로 퍼센트 100vh*/
+      .boxWrapper {
+        width: 400px;
+        height: 400px;
+        padding: 20px;
+        background-color: #34ace0;
+        box-shadow: 5px 5px 10px rgba(255, 0, 0, 0.5);
+        margin: 50px auto;
+      }
+      .box {
+        background-color: rgba(255, 0, 0, 0.5);
+        height: 100%;
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .parent {
+        /* position : 위치지정을위한 설정 
+          relative : 설정한 위치에서 시작, absolute : 부모기준으로 배치
+          포지션지정 top, left 등  */
+        position: relative;
+        left: 100px;
+        background-color: #ccc;
+        width: 400px;
+        height: 400px;
+      }
+      .child {
+        /* 사진안에 버튼이나 추가요소를 적용하기위해 사용
+          다만 부모요소가 position을 선언하고 있어야 사용가능 */
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 200px;
+        height: 200px;
+        background-color: #34ace0;
+      }
+      /* 메뉴바 설정 */
+
+      .visual {
+        /* 배경이미지 설정 */
+        height: 500px;
+        /* 백그라운드 이미지 설정  */
+        background-image: url("https://cdn.pixabay.com/photo/2024/03/08/09/47/ai-generated-8620359_1280.png");
+        /* 반복 이미지표기 금지  */
+        background-repeat: no-repeat;
+        /* 이미지 위치 조정  */
+        background-position: 50%;
+        /* 이미지 사이즈 조정  */
+        background-size: cover;
+        /* 글자 중앙정렬을 위한 포지션 지정 */
+        position: relative;
+      }
+      .visual .txt {
+        /* 부모요소 참조 글자 정중앙 정렬 */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+      .header {
+        /* position 화면상단에 계속표시 */
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 100;
+        padding: 20px;
+        /* 블러처리 */
+        backdrop-filter: blur(10px);
+      }
+      .header .logo {
+        font-size: 16px;
+      }
+      .header .misc {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      .header li a {
+        font-size: 14px;
+      }
+
+      /* 회사소개 메뉴바 */
+      .header .gnb > ul > li {
+        /* 화면 위로 정렬 */
+        border: 1px solid red;
+        display: inline-block;
+        width: 24;
+        text-align: center;
+        vertical-align: top;
+      }
+      .header .gnb {
+        /* border: 1px solid red; */
+        /* 박스형태를 제거 직접 위치 컨트롤*/
+        border: 1px solid #000;
+        position: absolute;
+        left: 250px;
+        right: 250px;
+        top: 0;
+      }
+      /* 모바일 전용 메뉴 */
+      .mNav {
+        display: none;
+      }
+      /* 테블릿화면시 설정 */
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .header .gnb {
+          left: 100px;
+          right: 100px;
+        }
+      }
+      /* 휴대폰 화면시 메뉴하고 로그인버튼 안보이게설정 
+        ,로 구분시 같이표시 */
+      @media (max-width: 768px){
+        .header .gnb, .misc {
+          display: none;
+        }
+        /* 휴대폰화면시 메뉴버튼 표기 */
+        .btnMenu {
+          border: #000 1px solid;
+          position: absolute;
+          top: 1em;
+          right: 1em;
+        }
+        .mNav {
+          display: block;
+        }
+      }
+      /* 768px이상일시 메뉴버튼 감추기 */
+      @media (min-width: 768px) {
+        .btnMenu {
+          display: none;
+        }
+      }
+      /* 뎁스를 추가할 메뉴 안보이게 설정 */
+      .header .gnb > ul ul {
+        border: red 1px solid;
+        visibility: hidden;
+        /* 세로정렬 위로설정 */
+        vertical-align: top;
+        background-color: #fff;
+        padding: 0px 30px;
+        transition: all 0.3s;
+        overflow: hidden;
+        height: 0;
+      }
+      /* 마우스를 올릴시 표기라는 명령어 */
+      .header .gnb > ul > li:hover ul {
+        visibility: visible;
+        height: 130px;
+      }
+      .header .gnb > ul > li a {
+        color: #000;
+        transition: color 0.3s;
+      }
+      .header .gnb > ul > li:hover a {
+        color: red;
+      }
+      .header .gnb > ul ul li a {
+        display: block;
+        padding: 10px 0;
+      }
+      .header .gnb > ul ul li a:hover {
+        color: #00f;
+        /* 색상 및 전환시 걸리는 시간설정 */
+        transition: color 0.3;
+      }
+      /* 마우스 누르고있을때 동작 */
+      .header .gnb > ul ul li a:active {
+        background-color: #dcdde1;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="logo"><a href="">로고</a></h1>
+      <nav class="gnb">
+        <!-- 마우스를 가져갔을때 메뉴가나오는걸 2뎁스라고한다 마우스 오버시
+        메뉴나오는게 없으면 1뎁스  -->
+        <ul>
+        <li>
+          <a href="">회사소개</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+        <li><a href="">제품소개</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+        <li><a href="">공지사항</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+        <li><a href="">자료실</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+      </nav>
+      <!-- 모바일 전용 버튼 -->
+      <button type="button" class="btnMenu">메뉴</button>
+    </ul>
+      <nav class="misc">
+        <li><a href="">로그인</a></li>
+        <li><a href="">회원가입</a></li>
+      </nav>
+    </header>
+    <!-- 모바일 전용 메뉴버튼 -->
+    <nav class="class mNav">
+      <nav class="gnb">
+        <ul>
+        <li>
+          <a href="">회사소개</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+        <li><a href="">제품소개</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+        <li><a href="">공지사항</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+        <li><a href="">자료실</a>
+          <ul>
+            <li><a href="">서브1</a></li>
+            <li><a href="">서브2</a></li>
+            <li><a href="">서브3</a></li>
+          </ul>
+        </li>
+      </nav>
+    </nav>
+    <div class="visual">
+      <h2 class="txt">우리 병원 최고에오!</h2>
+    </div>
+    <div class="boxWrapper">
+      <h1 class="box">CSS - Cascading Style Sheet</h1>
+    </div>
+    <label for="">라벨이다</label>
+    <div class="parent">
+      <div class="child"></div>
+    </div>
+    <!-- id 지정시 원하는 항목만 스타일 설정가능 1개만 사용가능
+      id는 페이지내 한번만 존재해야함 
+      자바스크립트에서 사용하려고 지정 -->
+    <h2 id="loginText" class="bg">로그인</h2>
+    <ul style="padding: 50px">
+      <style>
+        ul {
+          /* 리스트의 표기를 삭제 : none*/
+          list-style-type: decimal;
+        }
+      </style>
+      <li>html</li>
+      <li>text</li>
+      <li>text</li>
+      <li>text</li>
+      <li>text</li>
+      <li>text</li>
+    </ul>
+    <!-- 이미지 붙이기 
+      float는 부모요소를 참조하지 않음-->
+    <style>
+      .img{
+        float: right;
+      }
+      .parent1{
+        border: red 1px solid;
+        padding: 20px;
+      }
+      /* float된 자식 요소가 있으면 부모의 높이가 0이 되는 경우가 있어서, 
+        이럴 때 가상 요소를 넣어서 부모가 자식의 높이를 감싸도록 강제로 유도하는 
+        역할이에요. */
+      .parent1::after {
+        content: "";         /* 가상의 요소를 생성 (빈 요소) */
+        display: block;      /* 블록 요소로 만들어서 레이아웃 참여하게 함 */
+        clear: both;         /* float 해제 (왼쪽/오른쪽 둘 다) */
+      }
+      .item{
+        border: yellow 3px solid;
+        background-color: gray;
+        height: 200px;
+      }
+      /* 한개의 클래스내에 같은태크가 있는걸 표시할때 띄어쓰기 없이
+        붙여쓴다 */
+      .item.left {
+        float: left;
+        width: 50%;
+      }
+      .item.right {
+        float: right;
+        width: 50%;
+      }
+    </style>
+    <div class="parent1">
+      <div class="item left"></div>
+      <div class="item right"></div>
+    </div>
+    <img class='img' src="https://placehold.co/400x200" alt="">
+    <p>
+      앵커 사교육 업체에 문제를 팔아 수억 원을 챙긴 전현직 교사들과 문제를
+      사들인 강사들이 무더기로 적발됐습니다. 아예 문항 거래팀을 만들어
+      조직적으로 문제를 거래해 온 사교육 업체도 있었습니다. 송서영 기자입니다.
+      리포트 2023학년도 수능 영어 23번 문항입니다. 당시 국내에 출판도 안 된
+      글이었는데, 수능 직전인 9월 말 일타 강사 조 모 씨의 문제집에 실렸습니다.
+      유출 의혹이 불거졌고, 경찰 수사 결과, 평가원이 제대로 검증하지 못해 벌어진
+      일로 확인됐습니다. 수능 출제 위원이었던 대학교수가 보안 서약을 위반하고
+      자신이 감수한 출판 예정인 EBS 교재 속 지문을 그대로 수능에 내버렸고, 일타
+      강사 조 모 씨는 같은 지문 문제를 현직 교사에게 돈을 받고 사 문제집에
+      실었습니다. 평가원은 조 씨의 문제집을 사전 검증 대상에서 빠뜨렸습니다.
+      다만 교수와 평가원, 일타강사 간 연관성은 확인되지 않았습니다. 경찰은
+      교육부의 의뢰로 이른바 '사교육 카르텔'에 대해, 유명 입시학원인 시대인재를
+      압수수색 하는 등 1년 8개월 동안 수사를 벌였습니다. [오석환/교육부 차관
+      (2023년 7월)] "EBS 교재의 집필 및 감수 과정에 대한 관리나 사교육 관련성이
+      제기된 수능 모의평가 문항에 대한 사후 대응이 미흡했다는 정황이 파악된
+      상황입니다." 전현직 교사 72명을 포함해 일타 강사 등 100명이 청탁금지법
+      위반과 배임 혐의 등으로 검찰에 넘겨졌습니다. 교사들은 문항당 최대 50만
+      원을 받고 사교육 업체나 강사에게 문제를 만들어 넘겼는데, 교사 1명이 많게는
+      2억 6천만 원을 받았습니다. 아예 '문항 제작팀'까지 꾸리고 대학생
+      아르바이트를 동원해 조직적으로 문항을 거래하며 사교육 업체에서 6억여 원을
+      받은 경우도 있었습니다. 소속 고등학교의 내신 시험에 자신이 사교육 업체에
+      팔았던 문제를 내거나, 대학교 입학사정관이 사교육 업체의 중개를 받아
+      수험생을 개인적으로 지도한 사례도 적발됐습니다. 경찰은 교사들의 문항 판매
+      행위가 관행적으로 지속돼 왔다며, 관련 기관에 수사 결과를 전달해 범행에
+      가담한 교원에 대한 징계 절차가 착수될 수 있도록 하겠다고 밝혔습니다.
+      MBC뉴스 송서영입니다.
+    </p>
+    <!-- class 지정시 원하는 항목만 스타일 설정가능 2개이상 사용가능
+      class 명은 중복사용가능 
+      일반적인 스타일 지정시 사용-->
+    <h2 class="joinTitle bg">회원가입</h2>
+    <form action="" class="form">
+      <!-- 사용자가 입력하는 요소는 inline 요소를 가지고 있다.
+        그외 다른 요소는 block 속성을 가지고 있다.-->
+      <!-- inline : 콘텐츠의 내용의 길이만큼 공간차지
+        block : 화면의 끝에서 끝까지의 공간을 차지-->
+      <!-- 로그인 -->
+      <fieldset class="padding">
+        <!-- 태그 안에 스타일 표기 인라인 스타일 -->
+        <legend class="legend">로그인 폼</legend>
+        <div class="row">
+          <!-- 인라인 속성을 블락 속성으로 변경후 스타일 적용 -->
+          <label for="" class="label">아이디</label>
+          <input type="text" class="input" />
+        </div>
+        <div class="row">
+          <label for="" class="label">패스워드</label>
+          <input type="password" class="input" />
+        </div>
+        <button class="button">로그인</button>
+      </fieldset>
+    </form>
+  </body>
+</html>

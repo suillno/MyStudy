@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* + 는 인접한 형제 선택자 */
+    section > div > p + p {
+      color: red;
+    }
+    /* nth-child(번호) 번호 번째 가상 선택자 */
+    section > div > p:nth-child(1) {
+      color: gray;
+    }
+    /* first-child 첫번째 선택자
+        last-child 마지막 선택자 */
+    section > div > p:last-child {
+      color: aquamarine;
+    }
+
+    /* 우선순위 점유 !important */
+    section > p {
+      color: blue;
+    }
+    section > p {
+      color: yellow;
+    }
+    section > p {
+      color: blueviolet;
+    }
+    /* h1부터 전체 p요소 */
+    select h1 ~ p {
+      background-color: #222;
+      color: #fff;
+    }
+    /* 속성 선택자 */
+    form input[type="text"] {
+      background-color: goldenrod;
+    }
+    /* btn이 포함된 클레스 검색 */
+    [class~="btn"] {
+      color: red;
+    }
+    /* 클레스  이름중 btn이 포함된 클레스 선택 (like) */
+    [class^="btn"] {
+      color: blue;
+    }
+    /*  */
+    [class$="n1"] {
+      font-size: 30px;
+    }
+    /* %n% 검색 */
+    [class*="n"] {
+      background-color: #333;
+    }
+    /* css 변수 */
+    :root {
+      --green: #1abc9c;
+    }
+    /* 변수 호출 */
+    .btn:nth-child(1) {
+      display: block;
+      color: var(--green);
+      /* 함수계산 */
+      width: calc(100% - 50px);
+    }
+  </style>
+  <a href="" class="btn">링크1</a>
+  <a href="" class="btn1">링크2</a>
+  <a href="" class="btn link">링크3</a>
+  <form action="">
+    <input type="text" />
+    <input type="password" />
+  </form>
+  <body>
+    <section>
+      <h1>예약 방법 & 사용요금</h1>
+      <p>온라인 예약 가격</p>
+      <div>
+        <p>2~4인실 : 100,000원</p>
+        <p>10인실 : 200,000원</p>
+      </div>
+    </section>
+  </body>
+</html>

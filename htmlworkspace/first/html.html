@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- content는 속성을 의미 : 이 정보의 실제 내용은 이거야 -->
+    <meta name="description" content="html의 구조" />
+    <meta name="keywords" content="html, css, javascript" />
+    <meta name="author" content="제작자 또는 소유자 명" />
+
+    <!-- 반응형 웹 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 웹화면 상단 표기 타이틀 -->
+    <title>기본 구조</title>
+  </head>
+  <body>
+    <!-- 제목을 나타내는 태그 h1~h6 글자 크기 -->
+    <!-- h1은 가능하면 가장중요한 제목에 한번만 사용 -->
+    <h1>h1 태그 - 제목 표기</h1>
+    <h2>h1 태그 - 제목 표기</h2>
+    <h3>h1 태그 - 제목 표기</h3>
+    <h4>h1 태그 - 제목 표기</h4>
+    <h5>h1 태그 - 제목 표기</h5>
+    <h6>h1 태그 - 제목 표기</h6>
+    <!-- 문단 표기 -->
+    <!-- br 개행, hr 분기 개행 -->
+    <p>
+      문단 표기 <br />
+      개행사용
+    </p>
+    <hr />
+    <p>뉴스기사 작성중</p>
+    <!-- blockquote : 인용구 -->
+    <blockquote>의협회장 “선배가 나설 차례”…총궐기대회 참여 촉구</blockquote>
+    <!-- 출처 표기 -->
+    <p>네이버 발췌</p>
+    <!-- 텍스트 강조 -->
+    <!-- strong : 경고성 표기 -->
+    <!-- b : 글자만 굵게 사용 -->
+    <p>신용카드 번호가 <strong>도용</strong>되었습니다</p>
+    <p><b>참치</b>전문점</p>
+    <!-- 기울기 : em, i, cite -->
+    <!-- em : 글씨 기울여쓰고 강조 -->
+    <!-- i : 관용구 -->
+    <!-- cite : 출처표시 (인용된 저작물)-->
+    <p>의협회장 “<em>선배가 나설 차례</em>”…총궐기대회 참여</p>
+    <p>의협회장 “<i>선배가 나설 차례</i>”…총궐기대회 참여</p>
+    <p>의협회장 “<cite>선배가 나설 차례</cite>”…총궐기대회 참여</p>
+    <!-- del : 밑줄 표기, small : 부가정보 표기(작은글씨)  -->
+    <p><del>10,000</del>원 => 5,000원 <small>50%</small></p>
+    <!-- sup : 윗첨자, sub : 아래첨자-->
+    <p>H<sub>2</sub>O</p>
+    <p>2<sup>2</sup></p>
+    <!-- 목록 태그 ol, ul, li-->
+    <!-- ol : 각항목이 순서대로 나열되어야 할때 (숫자로 표기)-->
+    <h2>사계절</h2>
+    <ol>
+      <li>봄</li>
+      <li>여름</li>
+      <li>가을</li>
+      <li>겨울</li>
+    </ol>
+    <!-- ul : 순서와 무관한 목록일때 (o 표기)-->
+    <h2>여행 짐 목록</h2>
+    <ul>
+      <li>바지</li>
+      <li>상의</li>
+      <li>칫솔</li>
+      <li>치약</li>
+    </ul>
+    <!-- ul>li*10>p: ul 태그 안에 li를 10번 그안에 p를 넣어줘-->
+    <!-- 설명 목록 태그 d1, dt, dd-->
+    <!-- dl : description list -->
+    <!-- dt : name -->
+    <!-- dd : value -->
+    <h2>상품 구성</h2>
+    <d1>
+      <dt>선물용</dt>
+      <dd>소과 13~16과</dd>
+      <dd>중과 10~12과</dd>
+    </d1>
+    <!-- table : 표만들기-->
+    <!-- 테이블의 스타일 변경 -->
+    <style>
+      table,
+      td,
+      th {
+        border: 1px solid red;
+        border-collapse: collapse;
+        padding: 10px;
+      }
+      table {
+        width: 80%;
+      }
+    </style>
+
+    <table>
+      <!-- tr : 행 생성, td : 내용 작성-->
+      <caption>
+        선물용과 가정용 상품 구성
+        <!--표의 제목표기 tr, td-->
+      </caption>
+      <!-- colgroup : 각 열을 그룹으로 묶어 주기 -->
+      <!-- col : 각 열을 의미-->
+      <colgroup>
+        <col style="width: 100px; background-color: #ccc" />
+        <col style="width: 100px" />
+        <col style="width: 100px" />
+        <col style="width: 100px" />
+      </colgroup>
+      <!-- thead : 테이블 해더  -->
+      <thead>
+        <tr>
+          <th>용도</th>
+          <th>용량</th>
+          <th>개수</th>
+          <th>가격</th>
+        </tr>
+      </thead>
+      <!-- tbody : 테이블의 내용 -->
+      <tbody>
+        <tr>
+          <td>선물용</td>
+          <td>3kg</td>
+          <td>11~16과</td>
+          <td>35,000원</td>
+        </tr>
+        <!-- colspan : 가로칸 합치기 합쳐진 칸만큼 같은 tr내 td를 지워야함 -->
+        <tr>
+          <td></td>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+        <!-- rowspan : 세로칸 합치기 합쳐진 칸만큼 아래칸 tr내 td를 지워야함 -->
+        <tr>
+          <td rowspan="2"></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+      <!-- tfoot : 요약정보 (비고)-->
+      <tfoot>
+        <tr>
+          <td>요약정보표기기</td>
+          <td>111</td>
+        </tr>
+      </tfoot>
+    </table>
+    <!-- 이미지 표기 -->
+    <style>
+      img {
+        max-width: 80%;
+      }
+    </style>
+    <!-- 본문과 상관있는 이미지 -->
+    <img src="/img/image.jpg" alt="지하철에서 보는풍경" />
+    <!-- figure : 본문과 연관이 없는 이미지표기(비쥬얼용) -->
+    <!-- figcaption : 이미지 설명-->
+    <figure>
+      <img src="/img/image.jpg" alt="지하철에서 보는풍경" />
+      <figcaption>지하철안에서 보는 이미지</figcaption>
+    </figure>
+    <!-- 비디오 재생 -->
+    <!-- controls : 컨트롤 바 생성, autoplay : 자동재생, poster : 영상 재생전 이미지표기-->
+    <!-- muted : 음소거, loop : 동영상 루프-->
+    <video
+      controls
+      muted
+      loop
+      src="http://media.w3.org/2010/05/sintel/trailer.mp4"
+    ></video>
+    <!-- 오디오 재생 비디오와동일-->
+    <audio src=""></audio>
+    <!-- 링크이동 -->
+    <!-- target="_blank" : 새창에서 열기-->
+    <a href="sub.html" target="_blank">
+      <img src="/img/link.png" alt="링크이동" />
+    </a>
+    <!-- 목차이동 -->
+    <!-- a href="#order" : order라는 명의 위치로 이동-->
+    <a href="#order">이동</a>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- id : order라는 명칭을 붙여줌-->
+    <p id="order">내용</p>
+  </body>
+</html>
