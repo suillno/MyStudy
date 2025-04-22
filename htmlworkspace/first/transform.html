@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .container {
+      width: 350px;
+      height: 350px;
+      border: 1px solid red;
+      /* 화면 가운데 정렬 */
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      /* 원근감 주기 */
+      /* perspective: 300px; */
+    }
+    .container .box {
+      width: 300px;
+      height: 300px;
+      background-color: blanchedalmond;
+      transition: all 0.5s;
+
+      /* transform : 형태나 위치변경 
+        translate(x, y) : x, y 축으로 이동
+        translateX(x) : x 축으로 이동
+        translateY(y) : y 축으로 이동
+        translateZ(z) : z 축으로 이동
+        translate3d(x, y, z) : 3방향으로 이동 */
+
+      /* scale(x, y) : x, y 축으로 확대
+        scale(x) : x 축으로 확대
+        scale(y) : y 축으로 확대
+        scale(z) : z 축으로 확대
+        scale3d(x, y, z) : 3방향으로 확대 */
+
+      /* rotate : 회전 
+        rotate(각도) : 50deg*/
+
+      /* skew : 왜곡 deg 도 사용
+        skew(x, y) : x,y 축으로 왜곡
+        skewX, skewY  */
+    }
+    .container:hover .box {
+      transform: translate(50px, 50px);
+      transform: scale(1.5, 2);
+      transform: rotate(50deg);
+      transform: rotateX(240deg);
+      transform: skewX(30deg);
+    }
+    .scene {
+      width: 300px;
+      height: 200px;
+      border: 1px solid blue;
+      margin: 0 auto;
+      /* 원근감 주기 */
+      /* perspective: 1000px; */
+    }
+    .scene .card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      /* 3d 유지 */
+      transform-style: preserve-3d;
+      transition: transform 1s ease;
+    }
+    .scene:hover .card {
+      transform: rotateY(180deg);
+    }
+    .card-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      /* 3d동작시 겹쳐있는 뒷면 안보이게설정 */
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .scene .card .front {
+      background-color: royalblue;
+    }
+    .scene .card .back {
+      background-color: rosybrown;
+      /* 뒤로 회전 */
+      transform: rotateY(180deg);
+    }
+  </style>
+  <body>
+    <div class="scene">
+      <div class="card">
+        <div class="card-face front">front</div>
+        <div class="card-face back">back</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="box"></div>
+    </div>
+  </body>
+</html>
