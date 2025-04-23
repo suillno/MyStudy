@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="elem">
+      <div id="elem-content">내용</div>
+    </div>
+    <ul>
+      <li>1-1</li>
+      <li>1-2</li>
+    </ul>
+    <ul>
+      <li>2-1</li>
+      <li>2-2</li>
+    </ul>
+  </body>
+  <script>
+    // 요소 얻기
+    const elem = document.getElementById("elem");
+    // 배경색 칠하기
+    elem.style.background = "red";
+
+    // 요소얻기 + 배경색칠하기
+    document.getElementById("elem").style.background = "blue";
+
+    // 요소전체 선택
+    let elems = document.querySelectorAll("ul > li:last-child");
+    console.log(elems);
+    //  단일 요소 선택 (여러개일시 첫번째 요소 반환)
+    elems = document.querySelector("ul > li");
+    console.log(elems);
+  </script>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>시작</div>
+    <ul>
+      <li>항목</li>
+    </ul>
+    <div>끝</div>
+    <script>
+      /**
+       * 문서 객체 모델 (DOM)
+       * Document Object Model
+          웹페이지 내의 모든 콘텐츠(HTML 요소, 텍스트 등)를 객체로 표현한 구조
+          `document` 객체: DOM의 **진입점 역할**을 하며, 웹 페이지 전체를 조작
+          이를 통해 HTML 요소를 읽고, 수정하고, 생성하고, 삭제하는 작업이 가능하다.
+       */
+
+      // DOM에서 head, body 요소에 접근
+      document.head;
+      document.body;
+
+      // HTML 문서의 루트 요소에 접근 (<html> 전체)
+      document.documentElement;
+
+      /**
+       * 자식노드 : 부모노드의 바로 아래에 중첩관계
+          head, body > html 요소의 자식노드
+       * 후손노드 : 자식노드, 자식노드의 모든 자식노드
+      */
+      //  자식노드 조회
+      for (let i = 0; i < document.body.childNodes.length; i++) {
+        console.log(document.body.childNodes[i]);
+      }
+      // 요소의 부모요소 확인
+      console.log(document.body.parentNode);
+      // 다음 형제요소 찿기
+      console.log(document.head.nextElementSibling);
+      // 이전 형제요소 찿기
+      console.log(document.body.previousElementSibling);
+
+      /**
+       * 브라우저 객체 모델 (BOM)
+       * 문서 이외의 모든것을 제어하기 위해 브라우저가
+       * 제공하는 추가객체
+       * alert, confrim, promt, location,navigator
+       * alert()	메시지 표시	입력 ❌, 출력 ✅
+       * confirm()	확인/취소 선택	입력 ❌, 출력: true/false
+       * prompt()	사용자 입력 받기	입력 ✅, 출력: 문자열/null
+       * location	주소 관련 제어	주소 확인/이동 가능
+       * navigator	브라우저/기기 정보 확인	시스템 정보 출력
+       */
+      /* if (confirm("네이버로이동 할거냐?")) {
+        location.href = "https://www.naver.com";
+      } */
+      //  내부요소 확인
+      console.log(navigator);
+    </script>
+  </body>
+</html>

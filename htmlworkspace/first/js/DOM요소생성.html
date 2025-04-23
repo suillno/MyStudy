@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ol id="ol">
+      <li>0</li>
+      <li>1</li>
+      <li>2</li>
+    </ol>
+    <script>
+      const ol = document.querySelector("#ol");
+      ol.before("비포");
+      ol.after("에프터");
+      ol.prepend("프리펜드");
+      ol.append("어펜드");
+      // li 요소 생성후 html li에 프리펜드 담기 이후 ol요소 마지막에 추가
+      const li = document.createElement("li");
+      li.innerHTML = "프리펜드";
+      ol.append(li);
+      // dom 요소 생성하기기
+      // 1. div 요소 생성
+      const div = document.createElement("div");
+      // 2. 만든요소의 클래스 설정
+      div.className = "alert";
+      // 3. 내용 넣기
+      div.innerHTML = "<strong>안녕<strong> 반갑습니다.";
+      // 4. 생성된 태크 body에 넣기
+      document.body.append(div);
+    </script>
+  </body>
+</html>

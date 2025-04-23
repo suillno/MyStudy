@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>목차</h1>
+    <div class="contents">
+      <ul class="book">
+        <li class="chapter">1장</li>
+        <li class="chapter">2장</li>
+      </ul>
+    </div>
+    <script>
+      const chapter = document.querySelector(".chapter");
+      console.log(chapter);
+      // 부모요소 찿기 closest : 자기자신을 포함해서 css 선택자와 일치하는
+      // 가장가까운 조상요소 찿기
+      console.log(chapter.closest(".book"));
+
+      // id = age-table 인 테이블 찿기
+      const q1 = document.querySelector("#age-table");
+      // 테이블 내의 label 요소 출력
+      const q2 = q1.querySelectorAll("label");
+      // 테이블 내의 첫번째 td
+      const q3 = q1.querySelector("td");
+      // name = sesuch 인 폼 찿기
+      const q4 = q1.querySelector("form[name=search]");
+      // 폼의 첫번째 input
+      const q5 = q4.querySelector("input");
+      // 폼의 마지막 input
+      const q6 = q4.querySelectorAll("input");
+      q6[q6.length - 1];
+      const q7 = q4.querySelector("form[name=search] input:last-of=type");
+    </script>
+  </body>
+</html>
