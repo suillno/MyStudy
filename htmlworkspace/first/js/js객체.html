@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * primitive type, Object
+       * object는 참조에 의해 저장, 복사가 된다.
+       * (call by reference)
+       * primitive type은 값 그대로 저장, 복사가 된다.
+       * (call by value)
+       **/
+      //   primitive type
+      const msg = "hello";
+      const phrase = msg;
+
+      //   object
+      const user = {
+        name: "john",
+      }; // user에 객체를 참조할수 있는 값이 저장됨
+      const admin = user; // 객체가 할당된 변수를 복사할때는 객체의 참조값이 복사되고
+      // 객체는 복사되지 않는다
+      admin.name = "admin";
+      // 참조에 의해서 값을 변경함 따라서 user의 name은 john이아니라 admin이 된다.
+      console.log(user.name);
+
+      const a = {};
+      const b = a;
+      console.log(a === b);
+
+      const c = {};
+      const d = {};
+      console.log(c === d);
+
+      const usr = {
+        name: "john",
+        age: "30",
+      };
+      const clone = {};
+      // 빈객체에 usr 프로퍼티 모두 복사
+      for (let key in usr) {
+        clone[key] = usr[key];
+      }
+      clone.name = "admin";
+      console.log(usr);
+
+      // Object.assign(목표하는 객체, .....복사할 객체)
+      const permission1 = { canView: true };
+      const permission2 = { canEdit: true };
+      Object.assign(usr, permission1, permission2);
+
+      // 동일값 복사시 기존값이 갱신된다
+      Object.assign(usr, { name: "Smith" });
+      console.log(usr);
+      // 객체 복제의 가장 쉬운방법
+      const cpy = Object.assign({}, usr);
+      console.log(cpy);
+      const usr2 = {
+        name: "john",
+        sizes: {
+          height: 100,
+          width: 50,
+        },
+      };
+      const clone2 = Object.assign({}, usr2);
+      console.log(usr2.sizes.height);
+    </script>
+  </body>
+</html>

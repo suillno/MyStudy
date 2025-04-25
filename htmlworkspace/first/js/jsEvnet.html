@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 이벤트 동작시 이벤트 오브젝트를 생성하여 전달 -->
+    <button type="button" id="btn">클릭해주던가</button>
+    <script>
+      // 문서 로딩완료 표기
+      //   window.onload = function () {
+      //     alert("로딩완");
+      //   };
+      //   document.addEventListener("DOMContentLoaded", () => {
+      //     alert("로딩완료");
+      //   });
+      // addEventListener : 이벤트를 여러개 설정해놓을수있다
+      // 요소.addEventListener(event, handler, [options]);
+      // event : 이벤트의 이름 (ex : click)
+      // handler : 핸들러 함수
+      // -- 아래부터는 잘안씀
+      // options : {key: value}
+      // capture : true, false
+      // 이벤트 버블링(자식요소 => 부모요소), 캡쳐링(부모요소 => 자식요소) 이벤트 전달
+      // once : true, false / true로 설정하면 이벤트 리스너가 한번 실행되고 실행후
+      // 자동제거
+      // passive : true, false / true로 설정하면 preventDefault()이벤트 전파 호출불가
+      // 이벤트 처리향상
+      const btn = document.querySelector("#btn");
+      const obj = {
+        handleEvent(e) {
+          console.log(
+            `${e.type} 이벤트가 ${e.currentTarget}에서 발생하였습니다.`
+          );
+        },
+      };
+
+      class Menu {
+        handleEvent(e) {
+          switch (e.type) {
+            case "mousedown":
+              e.target.innerHTML = "마우스를 누름";
+              break;
+            case "mouseup":
+              e.target.innerHTML = "마우스를 뗐다";
+              break;
+          }
+        }
+      }
+      const menu = new Menu();
+      btn.addEventListener("mausedown", menu);
+      btn.addEventListener("mauseup", menu);
+
+      btn.addEventListener("click", obj);
+      btn.addEventListener("click", (e) => {
+        // 이벤트 타입입
+        console.log(e.type);
+        // 클릭발생 좌표확인
+        console.log(e.currentTarget + " 에서 이벤트 발생");
+        console.log(`이벤트 발생위치는 좌표: ${e.clientX} ${e.clientY} `);
+      });
+
+      /**
+       * 이벤트 : 모든 DOM노드에서는 신호를 만든다.
+       * 이벤트는 DOM에 한정되지 않는다
+       * 자주 사용하는 이벤트
+       *
+       * {마우스 이벤트}
+       * click : 요소에 마우스 좌클릭 했을때(터치감지)
+       * contectmenu : 요소 마우스 우클릭 했을때
+       * mouseover, mouseout : 커서가 요소 안으로 움직일때, 밖으로 움직일때
+       * 부모요소와 자식요소 모두에게 발생 O
+       * mouseenter, mouseleave : 위와 동일하나 부모요소를 포함한 자식 요소를
+       * 벗어나면 들어오는 이벤트에는 반응 x
+       * mousedown, mouseup : 마우스을 누르고있을때 마우스를 뗄 때
+       * mousemove : 마우스를 움직일때
+       *
+       * {폼 요소 이벤트}
+       * submit : 사용자가 폼을 제출할때
+       * focus : 사용자가 input과 같은 요소에 클릭시
+       *
+       * {키보드 이벤트}
+       * keydown, keyup : 키보드 버튼을 누르고 있을때, 뗄 때
+       *
+       * {문서 이벤트}
+       * DOMContentLoaded : HTML 전부 로드 및 처리되어 DOM 생성이 완료되었을때
+       *
+       * {CSS 이벤트}
+       * transitionened : css 애니메이션이 종료 되었을 때
+       */
+    </script>
+  </body>
+</html>

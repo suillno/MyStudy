@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="text">내용</div>
+    <button type="button" id="btn">버튼클릭시 id="text" 사라짐</button>
+  </body>
+  <script>
+    const btn = document.querySelector("#btn");
+    const id = document.querySelector("#btn.parentNode");
+    btn.addEventListener("click", (e) => {
+      e.preventDefault;
+      const rem = btn.previousElementSibling;
+      rem.hidden = true;
+    });
+  </script>
+</html>

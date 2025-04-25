@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 메서드, this
+      // 오브젝트에 메서드 넣기
+      // this >> 현재 객체를 의미
+      const user = {
+        name: "john",
+        age: 30,
+        sayBy: function () {
+          console.log(this.name + " " + "안녕히가세요");
+        },
+      };
+      user.sayHi = function () {
+        console.log("안녕하세요");
+      };
+      user.sayBy();
+      const usr = { name: "john" };
+      const adm = { name: "admin" };
+      function sayHi() {
+        console.log(this.name + " " + "안녕");
+      }
+      usr.f = sayHi;
+      adm.f = sayHi;
+      usr.f();
+      adm.f();
+      // => 화살표 함수에서는 외부에서 this 값을 받음
+      const usr2 = {
+        firstName: "다라",
+        sayHi() {
+          const arrow = () => console.log(this.firstName + " " + "안녕");
+          arrow();
+        },
+      };
+      usr2.sayHi();
+      // 옵셔널 체이닝 ?. => if 문대신 사용
+      // 프로퍼티가 없는 중첩 객체를 에러 없이 안전하게 처리한다.
+      const user2 = {};
+      // 옵셔널 체이닝이 없을때는
+      if (user && user.address && user.address.street) {
+      }
+      // 옵셔널 체이닝 사용
+      // ?. 앞의 평가 대상이 undefined또는 null이면 평가를 멈추고 undefined를 반환한다
+      // 존재하지 않아도 되는 값에만 사용
+      console.log(user2.address?.street);
+
+      const test = null;
+      let x = 0;
+
+      test?.sayHi(x++);
+      console.log(x);
+      const html = document.querySelector(".mypage")?.innerHTML;
+
+      // 따옴표
+      const single = "작은따옴표";
+      const double = "쌍따옴표";
+      const backtick = ``;
+      const user3 = {
+        name: "john",
+        age: 30,
+      };
+      // 백틱은 스페이스 및 엔터도 그대로 먹는다. 함수사용은
+      // ${} 로 사용한다
+      const html2 = `
+      <div class="container">
+        <p class="p">
+            제 이름은 ${user3.name} 이고, 나이는 ${user3.age} 입니다.
+        </p>
+        </div>`;
+      console.log(html2);
+
+      // 특수기호
+      /**
+       * \n : 줄바꿈 문자
+       * \r : 캐리지 리턴(Carriage return): 윈도우에서는 두개를 조합해서
+       *    줄을 바꿔야한다 \r\n
+       * \t : 탭
+       * \' ,\" : 따옴표 표기
+       * \uXXXX : 16진수 유니코드 표기법
+       **/
+      console.log("\u00A9");
+      const gustList = '손님: \n  "john"';
+      console.log(gustList);
+      console.log("문자열에 백슬레시 \\");
+      const str = "Hello";
+      console.log(str[0]);
+      console.log(str.charAt(0));
+      console.log(str[str.length - 1]);
+      for (let char of str) {
+        console.log(char);
+      }
+      // 문자열의 불변셩 : 중간에 문자 1개만 바꾸는기는 불가능
+      // 변경시에는 문자열을 새로만들어야한다
+      // 대소문자 변경은 매서드 호출로 처리한다
+      console.log(str.toUpperCase());
+      console.log(str.toLowerCase());
+      console.log(str[3].toUpperCase());
+      /**
+       * 문자열 찿기
+       * indexOf('찿을 문자열', 시작할번호)
+       * 찿으면 위치를 반환, 못찿으면 -1 반환
+       **/
+      console.log(str.indexOf("l", 3));
+      const s1 = "As sly as fox, as strong as anox";
+      const target = "as";
+      let pos = 0;
+      // while (true) {
+      //   const foundPos = s2.indexOf(target);
+      //   if (foundPos == -1) break;
+      //   console.log(`위치 : ${foundPos}`);
+      //   pos = foundPos + 1;
+      // }
+      /**
+       * includes, startsWith, endsWith
+       * includes : 문자열 여부 찿기 true
+       * startsWith : 해당문자로 시작하냐
+       * endsWith : 해당문자로 끝나냐냐
+       */
+      console.log(s1.includes("as"));
+      /**
+       * 부분 문자열 추출
+       * slice(start, end) end는 옵션 -는 뒤에서부터
+       * substring(start, end) end는 옵션
+       * substr(start, end) end는 옵션
+       */
+      console.log(s1.slice(-5));
+      console.log(s1.substring(2));
+      /** 배열
+       */
+      arr = ["사과", "바나나", "오렌지", { name: "john" }];
+      console.log(arr[3].name);
+      /**
+       * (pop, push), {shift, unshift}
+       * Last-in-frist-out LIFO stack 개념 (마지막에 들어온 것이 먼저 나간다)
+       *
+       * Fisrt-in-Frist-out FIFO queue 개념 {먼저 들어온 것이 먼저 나간다}
+       * 메서드 |       역할 |      어디서? | 반환값
+       * push() | 요소를 끝에 추가 | 뒤쪽 | 새 배열 길이
+       * pop() | 요소를 끝에서 제거 | 뒤쪽 | 제거된 요소
+       * unshift() | 요소를 앞에 추가 | 앞쪽 | 새 배열 길이
+       * shift() | 요소를 앞에서 제거 | 앞쪽 | 제거된 요소
+       */
+      arr.pop();
+      arr.push("수박");
+      arr.unshift("배");
+      console.log(arr);
+      arr.shift();
+      console.log(arr);
+      // 인덱스로 배열 추출
+      for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+      // 값으로 배열 추출
+      for (let value of arr) {
+        console.log(value);
+      }
+      // 객체의 키 순환
+      for (let key in arr) {
+        console.log(arr[key]);
+      }
+      // 배열에서 요소 하나삭제를 위해 delete를 사용하면 삭제된 배열에 빈공간이 생긴다
+      delete arr[0];
+      console.log(arr);
+      // 따라서 splice를 사용해야한다 (삭제할요소, 삭제할요소갯수, 대체할요소....)
+      // 대체할요소는 옵션, 결과값 삭제된요소 반환
+      arr.splice(0, 1, "apple", "banna");
+    </script>
+  </body>
+</html>

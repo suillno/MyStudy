@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <style>
+      #example {
+        position: absolute;
+        top: 180px;
+        left: 180px;
+      }
+      #example p {
+        width: 300px;
+        height: 200px;
+        border: 24px solid brown;
+        padding: 20px;
+        /* 영역을 벗어나는 내용 표기방식 */
+        overflow: auto;
+      }
+      #btn {
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        border: 0;
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <script>
+    /**
+     * 스크립트는 기본적으로 순차적으로 동작하기때문에 불러올 요소 위에
+     * 위치할시 오류가 발생한다 이에 본문을 다 읽고 스크립트를 실행할때는
+     * window.onload를 사용한다
+     */
+    window.onload = () => {
+      const btn = document.querySelector("#btn");
+      btn.addEventListener("click", () => {
+        const p = document.querySelector("#example p");
+        // 스크롤바를 최상단으로 부드럽게 올리기
+        p.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+      const ex = document.querySelector("#example");
+      // offsetParent.id : 부모 요소의 id 반환
+      console.log(example.offsetParent);
+      // 기하프로퍼티 : css 위치 파일 참조
+      // offsetLeft : 부모요소로 부터 왼쪽으로 얼마나 떨어져있나 숫자반환
+      // offsetTop : 부모요소로 부터 위쪽으로 얼마나 떨어져있나 숫자반환
+      console.log(example.offsetLeft);
+      // offsetWidth
+      console.log(example.offsetWidth);
+
+      // clientTop : 위쪽테두리 너비
+      console.log(example.clientTop);
+      console.log(example.clientLeft);
+
+      // clientWidth : 테두리 안의 너비 + padding
+      // clientHeight : 테두리 안의 높이 + padding
+      console.log(example.clientWidth);
+      console.log(example.clientHeight);
+
+      // scrollWidth, scrollHeight : client 와 비슷하지만 스크롤영역까지 모두 포함
+      console.log(example.scrollWidth);
+      console.log(example.scrollHeight);
+
+      // scrollTop : 얼마나 스크롤을 내렸는지 표기 (세로 스크롤바에
+      // 의해서 가려져 보이지 않는 요소의 높이)
+      console.log(example.scrollTop);
+      // scrollLeft : 얼마나 스크롤을 내렸는지 표기 (가로 스크롤바에
+      // 의해서 가려져 보이지 않는 요소의 너비)
+      console.log(example.scrollLeft);
+    };
+  </script>
+  <body id="body">
+    <div id="example">
+      <p>
+        앵커 사교육 업체에 문제를 팔아 수억 원을 챙긴 전현직 교사들과 문제를
+        사들인 강사들이 무더기로 적발됐습니다. 아예 문항 거래팀을 만들어
+        조직적으로 문제를 거래해 온 사교육 업체도 있었습니다. 송서영 기자입니다.
+        리포트 2023학년도 수능 영어 23번 문항입니다. 당시 국내에 출판도 안 된
+        글이었는데, 수능 직전인 9월 말 일타 강사 조 모 씨의 문제집에 실렸습니다.
+        유출 의혹이 불거졌고, 경찰 수사 결과, 평가원이 제대로 검증하지 못해
+        벌어진 일로 확인됐습니다. 수능 출제 위원이었던 대학교수가 보안 서약을
+        위반하고 자신이 감수한 출판 예정인 EBS 교재 속 지문을 그대로 수능에
+        내버렸고, 일타 강사 조 모 씨는 같은 지문 문제를 현직 교사에게 돈을 받고
+        사 문제집에 실었습니다. 평가원은 조 씨의 문제집을 사전 검증 대상에서
+        빠뜨렸습니다. 다만 교수와 평가원, 일타강사 간 연관성은 확인되지
+        않았습니다. 경찰은 교육부의 의뢰로 이른바 '사교육 카르텔'에 대해, 유명
+        입시학원인 시대인재를 압수수색 하는 등 1년 8개월 동안 수사를 벌였습니다.
+        [오석환/교육부 차관 (2023년 7월)] "EBS 교재의 집필 및 감수 과정에 대한
+        관리나 사교육 관련성이 제기된 수능 모의평가 문항에 대한 사후 대응이
+        미흡했다는 정황이 파악된 상황입니다." 전현직 교사 72명을 포함해 일타
+        강사 등 100명이 청탁금지법 위반과 배임 혐의 등으로 검찰에 넘겨졌습니다.
+        교사들은 문항당 최대 50만 원을 받고 사교육 업체나 강사에게 문제를 만들어
+        넘겼는데, 교사 1명이 많게는 2억 6천만 원을 받았습니다. 아예 '문항
+        제작팀'까지 꾸리고 대학생 아르바이트를 동원해 조직적으로 문항을 거래하며
+        사교육 업체에서 6억여 원을 받은 경우도 있었습니다. 소속 고등학교의 내신
+        시험에 자신이 사교육 업체에 팔았던 문제를 내거나, 대학교 입학사정관이
+        사교육 업체의 중개를 받아 수험생을 개인적으로 지도한 사례도
+        적발됐습니다. 경찰은 교사들의 문항 판매 행위가 관행적으로 지속돼 왔다며,
+        관련 기관에 수사 결과를 전달해 범행에 가담한 교원에 대한 징계 절차가
+        착수될 수 있도록 하겠다고 밝혔습니다. MBC뉴스 송서영입니다.
+      </p>
+      <button type="button" id="btn">맨위로</button>
+    </div>
+  </body>
+</html>

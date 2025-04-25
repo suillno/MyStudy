@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .notification {
+        position: fixed;
+        z-index: 1000;
+        padding: 5px;
+        border: 1px solid black;
+        font-size: 20px;
+        background: white;
+        text-align: center;
+      }
+
+      .welcome {
+        background: #b80000;
+        color: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>오늘은 시험 보는날이다.</h2>
+
+    <p>맨날 쉽다고하는 강사 극혐!!</p>
+
+    <script>
+      // showNotification 함수 호출하여 스타일 및 html 대입
+      function showNotification({ top = 0, right = 0, className, html }) {
+        const noti = document.createElement("div");
+        noti.classList.add(className);
+        noti.style.top = top + "px";
+        noti.style.right = right + "px";
+        noti.innerHTML = html;
+        noti.style.position = "absolute";
+        document.body.append(noti);
+        // setTimeout 두번째 파라미터 ms가 지난 후 코드를 실행하는 자바스크립트 내장 함수
+        setTimeout(() => {
+          noti.remove();
+        }, 1500);
+      }
+
+      // test it
+      let i = 1;
+      // setInterval은 두번째 파라미터 ms 단위를 주기적으로 실행해 주는 자바스크립트 내장 함수.
+      setInterval(() => {
+        showNotification({
+          top: 10,
+          right: 10,
+          html: "Hello " + i++,
+          className: "welcome",
+        });
+      }, 2000);
+    </script>
+  </body>
+</html>

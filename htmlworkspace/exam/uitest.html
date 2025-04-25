@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    
+    th, td {
+        padding: 10px 0;
+    }
+    td label {
+        display: table;
+        margin: auto;
+        font-weight: bold;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    #btn {
+        display: flex;
+        margin: 0 auto;
+    }
+    .inputtext {
+        width: 98%;
+        
+    }
+    .area {
+        width: 6em;
+    }
+    .fontSize{
+        width: 5em;
+    }
+    .action{
+        display: grid;
+        position: relative;
+        margin: 0 auto;
+        width: 100px;
+        height: 500px;
+        border: 1px solid black;
+        text-align: right;
+        color: red;
+        align-items: normal;
+    }
+  </style>
+  <body>
+    <form action="" class="form">
+      <table>
+        <tr>
+            <td><label for="">너비&nbsp;:</label></td>
+            <td><input type="text" class="area" id="width">&nbsp;px</td>
+            <td><label for="">높이&nbsp;:</label></td>
+            <td><input type="text" class="area" id="height">&nbsp;px</td>
+        </tr>
+        <tr>
+            <td><label for="">글자크기&nbsp;:</label></td>
+            <td><input type="text" class="fontSize" id="fontSize">&nbsp;px</td>
+            <td><label for="">굵기&nbsp;:</label></td>
+            
+            <td>
+                보통<input type="radio" name="pontWeidth" id="normal" value="normal"> 굵게<input type="radio" name="pontWeidth" id="bord" value="bold"></td>
+        </tr>
+        <tr>
+            <td>
+              <label for="">글자색&nbsp;:</label>
+            </td>
+            <td>
+              <input type="text" class="textcolor" id="textColor">
+            </td>
+            <td>
+              <label for="">배경색&nbsp;:</label>
+            </td>
+            <td>
+              <input type="text" id="backColor">
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <label for="">가로정렬&nbsp;:</label>
+            </td>
+            <td colspan="3">
+                <div>
+                왼쪽<input type="radio" name="width" id="lineLeft" value="left">가운데<input type="radio" name="width" id="lineCenter" value="center">
+              오른쪽<input type="radio" name="width" id="lineRight" value="right">
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <label for="">세로정렬&nbsp;:</label>
+            </td>
+            <td colspan="3">
+              위<input type="radio" name="height" value="normal">가운데<input type="radio" name="height" value="center"> 아래<input
+                type="radio" name="height" value="end"
+              />
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <label for="">출력문자열&nbsp;:</label>
+            </td>
+            <td colspan="3">
+              <input type="text" class="inputtext" id="input">
+            </td>
+          <tr>
+            <td colspan="4"><button type="button" id="btn">적용하기</button></td>
+          </tr>
+        </tr>
+      </table>
+    </form>
+    <div class="action">
+        hellow
+    </div>
+  </body>
+  <script>
+    const btn = document.querySelector("#btn");
+    const width = 
+    btn.addEventListener("click", (e) => {
+        e.preventDefault;
+        const action = document.querySelector(".action");
+        action.style.width = document.querySelector("#width").value + "px"
+        action.style.height = document.querySelector("#height").value + "px"
+        action.style.fontSize = document.querySelector("#fontSize").value + "px"
+        action.style.fontWeight = document.querySelector('input[type=radio][name=pontWeidth]:checked')?.value;
+        action.style.color = document.querySelector("#textColor").value
+        action.style.backgroundColor = document.querySelector("#backColor").value
+        action.style.textAlign = document.querySelector('input[type=radio][name=width]:checked')?.value
+
+        action.innerHTML = document.querySelector("#input").value
+        
+        action.style.alignItems = document.querySelector('input[type=radio][name=height]:checked')?.value;
+    })
+  </script>
+</html>
