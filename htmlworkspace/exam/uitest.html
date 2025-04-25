@@ -6,33 +6,37 @@
     <title>Document</title>
   </head>
   <style>
-    
+    /* 표 상하간격 */
     th, td {
         padding: 10px 0;
     }
+    /* 라벨 가운데정렬 */
     td label {
         display: table;
         margin: auto;
         font-weight: bold;
     }
+    /* 테이블 가운데 정렬 */
     table {
       margin: 20px auto;
-      border-collapse: collapse;
     }
+    /* 버튼 가운데정렬 */
     #btn {
         display: flex;
         margin: 0 auto;
     }
+    /* 출력텍스트입력창 길이조절 */
     .inputtext {
         width: 98%;
-        
     }
+    /* 넓이 높이 텍스트입력창 길이조절 */
     .area {
         width: 6em;
     }
     .fontSize{
         width: 5em;
     }
+    /* 버튼입력 동작 클레스 */
     .action{
         display: grid;
         position: relative;
@@ -47,13 +51,16 @@
   </style>
   <body>
     <form action="" class="form">
+        <!-- 표 그리기기 -->
       <table>
+        <!-- 1행 -->
         <tr>
             <td><label for="">너비&nbsp;:</label></td>
             <td><input type="text" class="area" id="width">&nbsp;px</td>
             <td><label for="">높이&nbsp;:</label></td>
             <td><input type="text" class="area" id="height">&nbsp;px</td>
         </tr>
+        <!-- 2행 -->
         <tr>
             <td><label for="">글자크기&nbsp;:</label></td>
             <td><input type="text" class="fontSize" id="fontSize">&nbsp;px</td>
@@ -62,6 +69,7 @@
             <td>
                 보통<input type="radio" name="pontWeidth" id="normal" value="normal"> 굵게<input type="radio" name="pontWeidth" id="bord" value="bold"></td>
         </tr>
+        <!-- 3행 -->
         <tr>
             <td>
               <label for="">글자색&nbsp;:</label>
@@ -76,6 +84,7 @@
               <input type="text" id="backColor">
             </td>
         </tr>
+        <!-- 4행 -->
         <tr>
             <td>
               <label for="">가로정렬&nbsp;:</label>
@@ -86,6 +95,7 @@
               오른쪽<input type="radio" name="width" id="lineRight" value="right">
             </td>
         </tr>
+        <!-- 5행 -->
         <tr>
             <td>
               <label for="">세로정렬&nbsp;:</label>
@@ -96,6 +106,7 @@
               />
             </td>
         </tr>
+        <!-- 6행 -->
         <tr>
             <td>
               <label for="">출력문자열&nbsp;:</label>
@@ -114,6 +125,7 @@
     </div>
   </body>
   <script>
+    // 버튼동작
     const btn = document.querySelector("#btn");
     const width = 
     btn.addEventListener("click", (e) => {
