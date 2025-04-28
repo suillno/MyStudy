@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <script>
+      function updateClock() {
+        const now = new Date();
+        const hours = now.getHours();
+        const min = now.getMinutes();
+        const sec = now.getSeconds();
+        document.querySelector(
+          "#clock"
+        ).textContent = `${hours}시 ${min}분 ${sec}초`;
+      }
+
+      // 1초마다 시계 업데이트
+      //   setInterval(실행할코드, 업데이트할시간);
+      setInterval(updateClock, 1000);
+
+      // Date : 객체 날짜
+
+      console.log(now);
+      /**
+       * 년,월,일등 값을 얻는 메서드
+       * getFullYear() : 연도 4자리
+       * getMonth() : 월 (단 : 0월 ~ 11까지) +1 해주어야함
+       * getDate() : 일
+       * getHours(), getMinutes(), getSeconds(), getMilliseconds() : 시, 분, 초, 밀리초
+       * getDay() : 요일 (단 : 0 ~ 6까지, 0은 일요일, 6은 토요일)
+       */
+      console.log(now.getFullYear());
+      console.log(now.getMonth() + 1);
+      console.log(now.getDate());
+      console.log(now.getHours());
+      console.log(now.getMinutes());
+      console.log(now.getSeconds());
+      console.log(now.getMilliseconds());
+      console.log(now.getDay());
+    </script>
+  </body>
+</html>

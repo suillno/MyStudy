@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 구조분해 (Destructuring) : 객체나 배열을 변수로 분해할수 있게 해준다.
+       * 인덱스를 통해 접근하지 않아도 값을 대입할수있다.
+       */
+      const arr = ["kh", "smart"];
+      const [first, second] = arr;
+      console.log(second, first);
+      f = arr[0];
+      s = arr[1];
+
+      // 오브젝트에서 값 가져오기
+      const options = {
+        title: "Menu",
+        width: 100,
+        height: 200,
+      };
+      // 함수명 변경시 {객체 프로퍼티 : 목표 변수} key : 변경할함수명
+      // {객체 프로퍼티 = "값이 없을시 기본값"}
+      const { title: t, width, height, etc = "기본값" } = options;
+      console.log(t, width, height, etc);
+      // ...rest : 나머지를 오브젝트 형태로 저장
+      const { title, ...rest } = options;
+      console.log(title, rest);
+      // 오브젝트 안에 오브젝트가 있을경우
+      const opt = {
+        title: "Menu",
+        size: {
+          width: 100,
+          height: 200,
+        },
+      };
+
+      const {
+        title: tit,
+        size: { width: w, height: h },
+      } = opt;
+    </script>
+  </body>
+</html>

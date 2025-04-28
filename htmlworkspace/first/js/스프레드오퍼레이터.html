@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 스프레드 오퍼레이터 : Spread Operator
+       * 배열, 객체를 다룰때 사용하는 문법 ... 으로 표기
+       * 각 요소를 개별적으로 펼처서 사용한다.
+       */
+      // 배열 합칠때
+      const arr1 = [1, 2, 3];
+      const arr2 = [4, 5];
+      console.log(...arr1);
+      const arr3 = [...arr1, ...arr2];
+      console.log(arr3);
+      const obj1 = { a: 1, b: 2 };
+      const obj2 = { ...obj1, c: 3 };
+      console.log(obj2);
+      // 값 대입시에도 사용할수있다
+      function sum(a, b, c) {
+        return a + b + c;
+      }
+      sum(...arr1);
+    </script>
+  </body>
+</html>

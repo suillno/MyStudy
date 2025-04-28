@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const arr = ["자바", "자바스크립트", "html"];
+      for (var i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+      /**
+       * forEach : 배열순회
+       * 배열.forEach(item, index)
+       */
+      arr.forEach((item, index) => {
+        console.log(`${item} 인덱스 ${index}`);
+      });
+
+      const user = [
+        { id: 1, name: "김유신" },
+        { id: 2, name: "임꺽정" },
+        { id: 3, name: "김구" },
+      ];
+      let result = {};
+      user.forEach((item, index) => {
+        if (item.id === 2) {
+          result = item;
+        }
+      });
+      console.log(result);
+
+      /**
+       * find : 특정한 조건에 부합하는 객체를 찿아서 반환
+       * 배열.find((item, index) => {코드})
+       * 배열순회하며 일치하는 값이 있으면 제일 처음값 하나만 반환
+       */
+      const res1 = user.find((i) => i.id === 2);
+      console.log(res1);
+
+      /**
+       * filter : 조건을 비교해서 조건에 맞는 값을 반환
+       * 배열.filter((itme, index) => {코드})
+       * 일치하는 값 모두를 배열로 반환
+       */
+      const res2 = user.filter((i) => i.id >= 2);
+      console.log(res2);
+
+      /**
+       * map : 배열전체 순환, 연산 결과를 배열로 반환
+       */
+      const res3 = user.map((i) => i.name.length);
+      console.log(res3);
+
+      /** sort : 정렬 메서드를 호출하면 재정렬된 배열이 반환
+       * 하지만 이미 배열이 수정된 상태라 반환값은 잘 안쓴다.
+       * 또한 일반적인 정렬은 쿼리에서 이미 정렬해서 받기때문에 더더욱 안쓴다.
+       * 결과가 1,15,2인 이유는 정렬하는 요소를 문자로 변환하기때문이다
+       * 따라서 펑션으로 정렬조건을 주어야한다.
+       */
+      function compareNum(a, b) {
+        if (a > b) return 1;
+        if (a === b) return 0;
+        if (a < b) return -1;
+      }
+      const nums = [1, 2, 15];
+      nums.sort(compareNum);
+      console.log(nums);
+
+      // split : 기호를 기준으로 문자를 베열로 만든다
+      const name = "john, jake, kim";
+      const nameArr = name.split(",");
+      console.log(nameArr);
+
+      /**
+       * join : split의 반대... 배열을 문자열로 합친다
+       */
+      const namejoin = nameArr.join(";");
+      console.log(namejoin);
+    </script>
+  </body>
+</html>

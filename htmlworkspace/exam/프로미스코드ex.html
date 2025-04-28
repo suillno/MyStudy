@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      async function fetchData() {
+        try {
+          const promise = await new Promise((resolve, reject) => {
+            setTimeout(() => resolve("성공"), 1000);
+            // setTimeout(() => reject('실패'), 1000);
+          });
+          console.log(promise);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      // 함수 호출
+      fetchData();
+
+      function loadScript(src) {
+        return new Promise(function (resolve, reject) {
+          const script = document.createElement("script");
+          script.src = src;
+          // 콜백(callback) 함수 : 스크립트 로딩이 끝난 후 실행될 함수
+          script.onload = () => resolve(script); // 성공시 스크립트실행행
+          script.onerror = () =>
+            reject(new Error(`${src} 를 불러오는중 오류 발생`)); // err시 반환 문구
+          document.head.append(script);
+        });
+      }
+      // 함수 호출
+      const primise = loadScript("/my/script.js");
+      promise
+        .then(
+          (script) => console.log("로딩완료"),
+          (error) => console.log("오류")
+        )
+        .then((script) => loadScript("/my/script1.js"))
+        .then((script) => loadScript("/my/script2.js"))
+        .then((script) => loadScript("/my/script3.js"));
+    </script>
+  </body>
+</html>

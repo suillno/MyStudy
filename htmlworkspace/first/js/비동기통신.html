@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * promise, asyns, wait
+       * 비동기 Aynchronous : 작업이 다른 작업의 완료를 기다리지 않고 계속 실행
+       * 동기 Synchronous : 하나의 작업이 끝나야 다음작업 진행
+       */
+      function loadScript(src, callback) {
+        const script = document.createElement("script");
+        script.src = src;
+        // 콜백(callback) 함수 : 스크립트 로딩이 끝난 후 실행될 함수
+        script.onload = () => callback(script);
+        document.head.append(script);
+      }
+      // 위 스크립트 안에 function newFunc() {} 함수가 있다.
+      newFunc(); // 함수가 존재하지 않아서 오류가 발생
+      // 따라서 스크립트 종료후 호출
+      // loadScript("/my/script.js", () => {}
+      /**
+       * promise : 비동기 작업이 성공했을때, 실패했을때 처리방식을 다루는 객체
+       * const promise = new promise(function(resolve, reject) {코드} )
+       * resolve : 일이 성공적으로 끝난 경우 그 결과를 나타내는 value와 함께 호출
+       * reject : 에러 발생 시 에러 객체를 나타내는 error 와 함께 호출
+       */
+      async function fetchData() {
+        try {
+          const promise = await new Promise((resolve, reject) => {
+            setTimeout(() => resolve("성공"), 1000);
+            // setTimeout(() => reject('실패'), 1000);
+          });
+          console.log(promise);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      // 함수 호출
+      fetchData();
+    </script>
+  </body>
+</html>

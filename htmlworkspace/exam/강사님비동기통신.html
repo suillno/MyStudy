@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+      #loading .loader {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+        border: 5px solid #fff;
+        border-radius: 100%;
+        border-bottom-color: red;
+        animation: rotation 1s linear infinite;
+      }
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background-color: darkslateblue;
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.3);
+      }
+      .header .form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .header .form label {
+        visibility: hidden;
+        position: absolute;
+      }
+      .header .form div {
+        width: calc(100% - 100px);
+      }
+      .header .form input {
+        height: 30px;
+        width: 100%;
+        padding: 10px;
+      }
+      .header .form button {
+        display: block;
+        width: 100px;
+        height: 30px;
+        background-color: #000;
+        color: #fff;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+      #data {
+        list-style: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin: 10px;
+      }
+      #data li {
+        border-bottom: 1px solid #ccc;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 20px;
+      }
+      #data li:last-child {
+        border-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading">
+      <span class="loader"></span>
+    </div>
+    <header class="header">
+      <form action="" id="form" class="form">
+        <div>
+          <label for="keyword">검색 키워드</label>
+          <input type="text" id="keyword" placeholder="검색 키워드" />
+        </div>
+        <button type="submit">검색</button>
+      </form>
+    </header>
+    <h1>Posts</h1>
+    <ul id="data"></ul>
+    <script>
+      /**
+       * 로딩 스피너 함수 정의
+       */
+      const loading = document.querySelector("#loading");
+      function toggleSpinner(show) {
+        if (show) {
+          loading.style.display = "none";
+        } else {
+          loading.style.display = "flex";
+        }
+      }
+
+      /**
+       * 폼 이벤트
+       */
+      const form = document.querySelector("#form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        // or 연산자로 입력값이 없을때 빈값 처리
+        const input = document.querySelector("#keyword").value || "";
+        // fetch 함수 호출
+        getPostList(input);
+      });
+
+      function getPostList(keyword) {
+        // 입력한 파라미터의 키워드 확인
+        console.log(keyword);
+        // 로딩 스피너 보이기
+        toggleSpinner(false);
+        fetch("https://jsonplaceholder.typicode.com/posts")
+          .then((response) => response.json())
+          .then((data) => {
+            // 데이터를 출력할 html 태그
+            const dataContainer = document.querySelector("#data");
+            // 기존에 있던 html 내용을 지우고 다시 그린다.
+            dataContainer.innerHTML = "";
+
+            if (keyword) {
+              // 입력한 파라미터의 키워드가 있을 경우 filter 메서드로 필터링 한 array
+              const filteredList = data.filter(
+                (elem) =>
+                  elem.title.includes(keyword) || elem.body.includes(keyword)
+              );
+              // 필터링 된 데이터를 loop 돌면서 html 생성
+              filteredList.forEach((element) => {
+                const elem = document.createElement("li");
+                elem.innerHTML = `
+              <h2>title : ${element.title}</h2>
+              <p>body : ${element.body}</p>
+              <p>id : ${element.id}, userId : ${element.userId}</p>
+            `;
+                dataContainer.appendChild(elem);
+              });
+            } else {
+              // 입력한 파라미터가 없을 경우 기본 로직 처리
+              data.forEach((element) => {
+                const elem = document.createElement("li");
+                elem.innerHTML = `
+              <h2>title : ${element.title}</h2>
+              <p>body : ${element.body}</p>
+              <p>id : ${element.id}, userId : ${element.userId}</p>
+            `;
+                dataContainer.appendChild(elem);
+              });
+            }
+          })
+          .catch((error) => console.log(error.message))
+          // 로직 처리 후 스피너 숨기기
+          .finally(() => toggleSpinner(true));
+      }
+
+      // 문서 로딩 후 기본적으로 리스트 전체 출력
+      getPostList();
+
+      /**
+       * promise > 뭔가 요청을하고 성공, 실패 둘 중 하나만 받는다. 그리고 비동기 통신에서 사용한다.
+       * fecth(url 경로 값)
+       * fetch(경로)
+       * .then((파리미터) => 할일)
+       * .then((파라미터) => 할일)
+       * .catch(에러 => 에러 처리)
+       * .finally(() => 할일)
+       */
+    </script>
+  </body>
+</html>

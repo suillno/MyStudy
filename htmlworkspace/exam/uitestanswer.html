@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .form-container {
+        width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .row {
+        display: flex;
+      }
+      .item {
+        display: flex;
+        align-items: center;
+        min-width: 350px;
+        padding: 10px;
+      }
+      .item span {
+        margin-left: 10px;
+      }
+      .item .label {
+        text-align: right;
+        width: 100px;
+        margin-right: 20px;
+        font-weight: bold;
+      }
+      .item label.radio {
+        text-align: left;
+        margin-right: 5px;
+        width: auto;
+        font-weight: normal;
+      }
+      .full-width {
+        width: 100%;
+      }
+      #btn {
+        display: block;
+        margin: 10px auto;
+      }
+      #box {
+        border: 2px solid #000;
+        margin: 0 auto;
+        width: 200px;
+        height: 400px;
+        font-size: 20px;
+        background-color: yellow;
+        color: #f00;
+        display: flex;
+      }
+      #box #text {
+      }
+    </style>
+    <form action="" class="form-container" id="form">
+      <div class="row">
+        <div class="item">
+          <label for="w" class="label">너비:</label>
+          <input type="text" id="width" value="200" />
+          <span>px</span>
+        </div>
+        <div class="item">
+          <label for="h" class="label">높이:</label>
+          <input type="text" id="height" value="400" />
+          <span>px</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <label for="w" class="label">글자크기:</label>
+          <input type="text" id="fontSize" value="20" />
+          <span>px</span>
+        </div>
+        <div class="item">
+          <p class="label">굵기:</p>
+          <label for="fn" class="radio label">보통</label>
+          <input type="radio" name="fontWeight" id="fn" value="normal" />
+          <label for="fn2" class="radio label">굵게</label>
+          <input type="radio" name="fontWeight" id="fn2" value="bold" checked />
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <label for="color" class="label">글자색:</label>
+          <input type="text" id="color" value="red" />
+        </div>
+        <div class="item">
+          <label for="bgColor" class="label">베경색:</label>
+          <input type="text" id="bgColor" value="yellow" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <p class="label">가로정렬:</p>
+          <label for="left" class="radio label">왼쪽</label>
+          <input type="radio" name="align" value="flex-start" id="left" />
+          <label for="center" class="radio label">가운데</label>
+          <input type="radio" name="align" value="center" id="center" checked />
+          <label for="right" class="radio label">오른쪽</label>
+          <input
+            type="radio"
+            name="align"
+            value="flex-end"
+            id="right"
+            checked
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="item">
+          <p class="label">세로정렬:</p>
+          <label for="top" class="radio label">위</label>
+          <input type="radio" name="valign" value="flex-start" id="top" />
+          <label for="middle" class="radio label">가운데</label>
+          <input
+            type="radio"
+            name="valign"
+            value="center"
+            id="middle"
+            checked
+          />
+          <label for="bottom" class="radio label">아래</label>
+          <input type="radio" name="valign" value="flex-end" id="bottom" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="item full-width">
+          <label for="txt" class="label">출력 문자열:</label>
+          <input type="text" id="txt" class="full-width" value="Hello World!" />
+        </div>
+      </div>
+      <button type="submit" id="btn">적용하기</button>
+    </form>
+    <div id="box">
+      <p id="text">Hello World!</p>
+    </div>
+    <script>
+      // form의 파라미터로 box에 그린다
+      function draw() {
+        /**
+         * 값을 입력하지 않을 케이스가 있으므로 기본값 처리 로직을 추가한다.
+         * 또한 px 단위로 받아야 하는 케이스에는 문자로 입력하는 케이스도 있기때문에 number로 형변환을 시도해본다.
+         */
+        const width =
+          (Number(document.querySelector("#width").value) || 200) + "px";
+        const height =
+          (Number(document.querySelector("#height").value) || 200) + "px";
+        const fontSize =
+          (Number(document.querySelector("#fontSize").value) || 12) + "px";
+        const fontWeight =
+          document.querySelector("input[name=fontWeight]:checked").value ||
+          "normal";
+        const color = document.querySelector("#color").value || "#f00";
+        const bgColor = document.querySelector("#bgColor").value || "yellow";
+        const hAlign =
+          document.querySelector("input[name=align]:checked").value || "left";
+        const vAlign =
+          document.querySelector("input[name=valign]:checked").value ||
+          "center";
+        const txt = document.querySelector("#txt").value || "Hello World!";
+        console.log("===== 값 확인 시작 =====");
+        console.log(
+          width,
+          height,
+          fontSize,
+          fontWeight,
+          color,
+          bgColor,
+          hAlign,
+          vAlign,
+          txt
+        );
+        console.log("===== 값 확인 끝 =====");
+        // box에 인라인 스타일로 그린다.
+        const box = document.querySelector("#box");
+        box.style.width = width;
+        box.style.height = height;
+        box.style.fontSize = fontSize;
+        box.style.color = color;
+        box.style.backgroundColor = bgColor;
+        box.style.justifyContent = hAlign;
+        box.style.alignItems = vAlign;
+        const p = document.querySelector("#text");
+        p.innerHTML = txt;
+      }
+
+      // 문서 로딩이 되면 우선 그린다.
+      draw();
+
+      // form의 submit 이벤트 처리
+      const form = document.querySelector("#form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        draw();
+      });
+    </script>
+  </body>
+</html>
