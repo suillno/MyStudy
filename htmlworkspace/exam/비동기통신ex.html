@@ -4,8 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <!-- 파비콘 -->
+
     <style>
       /* 로딩중 표기창 */
+
+      body {
+        position: relative;
+        /* 스크롤바 막기 */
+        overflow: auto;
+      }
 
       #loading {
         position: fixed;
@@ -33,12 +41,37 @@
       }
       /* 검색창 */
       #search {
-        position: absolute;
+        position: fixed;
         display: inline-block;
         width: 98%;
+        text-align: center;
         top: 0;
         border: solid 1px red;
       }
+      /* 타이틀 클릭시 동작 */
+      #newSearch {
+        display: none;
+        background-color: #fff;
+        border: 1px solid black;
+        width: 500px;
+        height: 600px;
+        position: absolute;
+        top: 70px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        overflow: auto;
+      }
+      /* 타이틀 클릭 새창 */
+      #newbtn {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+
+      #data {
+        position: relative;
+      }
+
       /* 스피너 돌아가는 애니매이션 생성 */
       @keyframes rotation {
         0% {
@@ -57,9 +90,16 @@
       <span class="loader"></span>
     </div>
     <!-- json data를 담을 ul 생성 -->
-    <ul id="data">
-      Post
-    </ul>
+    <div>
+      <ul id="data">
+        Post
+      </ul>
+      <!-- 타이틀 클릭시 동작 -->
+      <div>
+        <button type="button" id="newbtn">닫기</button>
+        <div id="newSearch"></div>
+      </div>
+    </div>
     <!-- 제이슨 값 검색창 -->
     <div id="search">
       <label for="">검색</label>
@@ -93,6 +133,41 @@
         getPostList(text);
       });
 
+      // 타이틀버튼 입력시 동작
+      function showInfo(id) {
+        const dataContainer = document.querySelector("#newSearch");
+        document.querySelector("body").style.overflow = "hidden";
+        dataContainer.innerHTML = ``;
+        dataContainer.style.display = "block";
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+          .then((response) => response.json())
+          .then((data) => {
+            dataContainer.innerHTML += `
+            <h2>본문</h2>
+            <h3>title: ${data.title}</h3>
+            <p>body: ${data.body}</p>
+            <p>id : ${data.id}</p>
+            <h2>댓글</h2>
+            `;
+          });
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+          .then((response) => response.json())
+          .then((data) => {
+            data.forEach((post) => {
+              dataContainer.innerHTML += `
+            <h3>name: ${post.name}</h3>
+            <p>email: ${post.email}</p>
+            <p>body: ${post.body}</p>`;
+            });
+          });
+      }
+      // 타이틀 입력시 새창 닫기 버튼
+      document.querySelector("#newbtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        const dataContainer = document.querySelector("#newSearch");
+        dataContainer.style.display = "none";
+        document.querySelector("body").style.overflow = "auto";
+      });
       // keyword는 값이 있으면 검색값 출력
       function getPostList(keyword) {
         // 로딩중 스피너 표기
@@ -119,7 +194,7 @@
             filterData.forEach((post) => {
               const json = document.createElement("li");
               json.innerHTML = `
-            <h2>title : ${post.title}</h2>
+            <button type="button" onclick="showInfo(${post.id})">title : ${post.title}</button>
             <p>body : ${post.body}</p>
             <p>id : ${post.id}, userid : ${post.userId}</p>`;
               dataContainer.appendChild(json);

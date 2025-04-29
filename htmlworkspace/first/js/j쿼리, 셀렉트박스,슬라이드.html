@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 제이쿼리, 제이쿼리 벨리데이션, 셀렉트박스 -->
+    <script src="../jquery응용프로그램/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.21.0/dist/jquery.validate.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- slick-carousel 슬라이드 기능넣기-->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css"
+      rel="stylesheet"
+    />
+    <!-- jquery parallax 이미지 동작 -->
+    <script src="../jquery응용프로그램/parallax.min.js"></script>
+  </head>
+  <style>
+    /* 페럴렉스를 동작하게 하기위한 조건 */
+    .parallax-window {
+      min-height: 400px;
+      background: transparent;
+    }
+    #mySelect {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+  <body>
+    <div
+      class="parallax-window"
+      data-parallax="scroll"
+      data-image-src="../img/3.jpg"
+    ></div>
+    <div id="slide">
+      <img src="../img/1.jpg" alt="" />
+      <img src="../img/2.jpg" alt="" />
+      <img src="../img/3.jpg" alt="" />
+    </div>
+    <select name="mySelect" multiple="multiple" id="mySelect">
+      <option value="java">java</option>
+      <option value="sql">sql</option>
+      <option value="html">html</option>
+    </select>
+    <p id="p" class="active">Hello world</p>
+    <button type="button" id="btn">버튼</button>
+    <form action="" id="form">
+      <div>
+        <label for="userId">아이디</label>
+        <input type="text" id="userId" name="userId" />
+      </div>
+      <div>
+        <label for="password">패스워드</label>
+        <input type="text" id="password" name="password" />
+      </div>
+      <input type="checkbox" id="autoLogin" name="autoLogin" />자동로그인
+      <div>
+        <button type="submit">로그인</button>
+      </div>
+    </form>
+    <script>
+      // window.onload, window.addEventLisner
+      $(document).ready(() => {
+        $("#mySelect").select2();
+        $("#slide").slick({
+          autoplay: true,
+          autoplaySpeed: 1000,
+          infinite: true,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        });
+        $(".parallax-window").parallax();
+      });
+      // form 검증 jquery-validation 사용
+      $("#form").validate({
+        rules: {
+          userId: {
+            required: true,
+            minlength: 3,
+          },
+          password: {
+            required: true,
+            rangelength: [3, 10],
+          },
+        },
+        messages: {
+          userId: {
+            required: "아이디를 입력하세요",
+            minlength: "3자리 이상 입력해주세요",
+          },
+          password: {
+            required: "비밀번호를 입력하세요",
+            rangelength: "{0}자 이상 {1}자 이하를 입력하세요",
+          },
+        },
+        errorPlacement: (err, elem) => {
+          elem.after(err);
+        },
+        submitHandler: () => {
+          console.log("제출");
+        },
+      });
+      // 자바스크립트 활용 DOM 선택하기
+      document.querySelector("#p").textContent = "안녕";
+      $("#p").text("jquery");
+
+      document.querySelector("#p").style.color = "red";
+      $("#p").css("color", "black");
+
+      document.querySelector("#btn").addEventListener("click", (e) => {
+        document.querySelector("#p").classList.toggle("active");
+      });
+      $("#btn").on("click", (e) => {
+        $("#p").fadeOut();
+        $("#p").fadeIn();
+        $("#p").toggleClass("active");
+      });
+    </script>
+  </body>
+</html>
