@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import vo.PostVo;
+
 public class MainAarryList {
 
 	public static void main(String[] args) {
@@ -18,6 +20,7 @@ public class MainAarryList {
 		// 컬레션 프레임워크 : 컬렉션, 맵 두가지로 나뉜다
 		// 1, 컬렉션 : 여러게의 데이터를 하나의 객체로 다루는 방법을 제공
 		// 2, 맵 : (key) 와 값 (value) 쌍으로 이루어진 데이터 구조이고 중복되지 않는 키를 사용헤서 값을 찿을수 있다.
+		PostVo
 		
 		String[] num = new String[] {"7777","4444","5555"};
 		List<String> num2 = new ArrayList<String>(Arrays.asList(num));
