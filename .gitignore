@@ -1,0 +1,84 @@
+
+# ---------------------------------------
+# 🟡 Java 기본 컴파일 파일
+# ---------------------------------------
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+*.log
+
+# VM crash logs
+hs_err_pid*
+replay_pid*
+
+# ---------------------------------------
+# 🔧 Gradle 관련 파일
+# ---------------------------------------
+.gradle/
+build/
+!gradle/
+gradle/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# ---------------------------------------
+# 🧰 Maven 관련 파일
+target/
+
+# ---------------------------------------
+# 🌱 Spring Tool Suite (STS)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# ---------------------------------------
+# 💡 IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+# ---------------------------------------
+# 🖥️ VS Code
+.vscode/
+
+# ---------------------------------------
+# 📱 J2ME (Java Mobile)
+.mtj.tmp/
+
+# ---------------------------------------
+# 🧪 테스트 소스 및 로그 파일
+src/test/
+temp/
+logs/
+
+# ---------------------------------------
+# 🟦 BlueJ
+*.ctxt
+
+# ---------------------------------------
+# 🧳 NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ---------------------------------------
+# 🗒️ 기타 불필요한 파일
+HELP.md
