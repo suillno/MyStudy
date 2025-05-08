@@ -29,24 +29,30 @@
     </tr>
   </thead>
   <tbody>
+  <!-- 테이블 데이터 가져오기 -->
+  	<c:forEach items="${list}" var="item">
+  	
+  
     <tr>
       <th scope="row">
       	<input type="checkbox" />
       </th>
-      <th scope="row">1</th>
+      <th scope="row"><c:out value="${item.boardNO}"></c:out></th>
       <td>
-      <a href="/board/view?id=1">ejfo fiejg; oejfkgj</a>
+      <!-- 제목 가져오기 및 게시물 클릭시 페이지 이동 -->
+      <a href="/board/view?id=<c:out value="${item.boardNO}"></c:out>"><c:out value="${item.boardTitle}"></c:out></a>
       <!-- 화면이 줄어들었을때 표기 -->
       	<div class="d-table-cell d-md-none phone">
-      		<p>작성자명</p>
-      		<p>2025-01-01</p>
+      		<p><c:out value="${item.boardWrite}"></c:out></p>
+      		<p><c:out value="${item.regDate}"></c:out></p>
       		<p>1</p>
       	</div>
       </td>
-      <td class="d-none d-md-table-cell">Otto</td>
-      <td class="d-none d-md-table-cell">@mdo</td>
+      <td class="d-none d-md-table-cell"><c:out value="${item.boardWrite}"></c:out></td>
+      <td class="d-none d-md-table-cell"><c:out value="${item.regDate}"></c:out></td>
       <td class="d-none d-md-table-cell">1</td>
     </tr>
+    </c:forEach>
   </tbody>
 </table>
 <%-- 글쓰기 버튼 --%>
@@ -74,5 +80,4 @@
 </nav>
 </div>
 </div>
-
 <%@ include file="/inc/footer.jsp" %>

@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface CrudService<T> {
 	
 	// insert, select, update, delete
-	void insert(HashMap<String, Object> requstMap);
+	int insert(T requstMap);
 	
 	List<T> selectList(HashMap<String, Object> requstMap);
 	

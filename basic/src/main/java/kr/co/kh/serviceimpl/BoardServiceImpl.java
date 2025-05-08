@@ -4,20 +4,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import kr.co.kh.dao.BoardDAO;
 import kr.co.kh.service.CrudService;
+import kr.co.kh.vo.BoardVO;
 
-public class BoardServiceImpl implements CrudService {
+public class BoardServiceImpl implements CrudService<BoardVO> {
 
 	@Override
-	public void insert(HashMap requstMap) {
+	public int insert(BoardVO requstMap) {
 		// TODO Auto-generated method stub
-		
+		BoardDAO boardDAO = new BoardDAO();
+		return boardDAO.insertBoard(requstMap);
 	}
 
 	@Override
-	public List selectList(HashMap requstMap) {
+	public List<BoardVO> selectList(HashMap<String, Object> requstMap) {
 		// TODO Auto-generated method stub
-		return null;
+		BoardDAO boardDAO = new BoardDAO();
+		List<BoardVO> list = boardDAO.selectList(requstMap);
+		System.out.println(list.toString());
+		return list;
 	}
 
 	@Override
