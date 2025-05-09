@@ -2,82 +2,122 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/inc/header.jsp" %>
 <style>
-<!-- 휴대폰화면시 표기화면 조정 -->
-.phone p {
+.show-sub-info {
+	display: none;
+}
+.show-sub-info p {
 	margin: 0;
+	font-size: 12px;
+}
+@media (max-width: 767px) {
+	.hide-cell {
+		display: none;
+	}
+	.show-sub-info {
+		display: block;
+	}
 }
 </style>
-<div class="container">
+<form method="post" action="/board/delete" onsubmit="return onDelete()" class="container">
 <table class="table">
-	<!-- 테이블 크기 조정및 화면크기에따른 감추기효과 적용 -->
 	<colgroup>
-		<col style="width:50px" />
-		<col style="width:70px"/>
+		<col style="width:100px" />
+		<col style="width:70px" />
 		<col />
-		<col class="d-none d-md-table-cell" style="width:100px"/>
-		<col class="d-none d-md-table-cell" style="width:100px"/>
-		<col class="d-none d-md-table-cell" style="width:70px"/>
+		<col class="hide-cell" style="width:100px" />
+		<col class="hide-cell" style="width:100px" />
+		<col class="hide-cell" style="width:70px" />
 	</colgroup>
   <thead>
     <tr>
-      <th scope="col">선택</th>
+      <th scope="col"><input type="checkbox" onclick="toggleAll(this)" />전체선택</th>
       <th scope="col">번호</th>
       <th scope="col">제목</th>
-      <th class="d-none d-md-table-cell" scope="col">작성자</th>
-      <th class="d-none d-md-table-cell" scope="col">작성일</th>
-      <th class="d-none d-md-table-cell" scope="col">조회수</th>
+      <th class="hide-cell" scope="col">작성자</th>
+      <th class="hide-cell" scope="col">작성일</th>
+      <th class="hide-cell" scope="col">조회수</th>
     </tr>
   </thead>
   <tbody>
-  <!-- 테이블 데이터 가져오기 -->
   	<c:forEach items="${list}" var="item">
-  	
-  
-    <tr>
-      <th scope="row">
-      	<input type="checkbox" />
-      </th>
-      <th scope="row"><c:out value="${item.boardNO}"></c:out></th>
-      <td>
-      <!-- 제목 가져오기 및 게시물 클릭시 페이지 이동 -->
-      <a href="/board/view?id=<c:out value="${item.boardNO}"></c:out>"><c:out value="${item.boardTitle}"></c:out></a>
-      <!-- 화면이 줄어들었을때 표기 -->
-      	<div class="d-table-cell d-md-none phone">
-      		<p><c:out value="${item.boardWrite}"></c:out></p>
-      		<p><c:out value="${item.regDate}"></c:out></p>
-      		<p>1</p>
-      	</div>
-      </td>
-      <td class="d-none d-md-table-cell"><c:out value="${item.boardWrite}"></c:out></td>
-      <td class="d-none d-md-table-cell"><c:out value="${item.regDate}"></c:out></td>
-      <td class="d-none d-md-table-cell">1</td>
-    </tr>
+	    <tr>
+	      <th scope="row">
+	      	<input type="checkbox" name="nos" value="<c:out value="${item.boardNo}" />" />
+	      </th>
+	      <th><c:out value="${item.boardNo}" /></th>
+	      <td>
+	      	<a href="/board/view?id=<c:out value="${item.boardNo}" />"><c:out value="${item.boardTitle}" /></a>
+	      	<div class="show-sub-info">
+	      		<p><c:out value="${item.boardWriter}" /></p>
+	      		<p><c:out value="${item.regDate}" /></p>
+	      		<p>1</p>
+	      	</div>
+	      </td>
+	      <td class="hide-cell"><c:out value="${item.boardWriter}" /></td>
+	      <td class="hide-cell"><c:out value="${item.regDate}" /></td>
+	      <td class="hide-cell">1</td>
+	    </tr>
     </c:forEach>
   </tbody>
 </table>
-<%-- 글쓰기 버튼 --%>
-<div class="text-end">
-	<a href="/board/write" class="btn btn-outline-success">글쓰기</a>
+<div class="d-flex justify-content-between">
+	<button type="submit" class="btn btn-danger">삭제</button>
+	<a href="/board/write" class="btn btn-primary">글쓰기</a>
 </div>
-<%-- 페이지 번호 --%>
-<div">
+<div class="d-flex justify-content-center">
 	<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+	  <ul class="pagination">
+	    <li class="page-item">
+	      <a class="page-link" href="#" aria-label="Previous">
+	        <span aria-hidden="true">&laquo;</span>
+	      </a>
+	    </li>
+	    <li class="page-item"><a class="page-link" href="#">1</a></li>
+	    <li class="page-item"><a class="page-link" href="#">2</a></li>
+	    <li class="page-item"><a class="page-link" href="#">3</a></li>
+	    <li class="page-item">
+	      <a class="page-link" href="#" aria-label="Next">
+	        <span aria-hidden="true">&raquo;</span>
+	      </a>
+	    </li>
+	  </ul>
+	</nav>
 </div>
-</div>
+</form>
+<style>
+.searchForm {
+	width: 300px;
+	margin: 0 auto;
+}
+.searchForm button {
+	width: 150px;
+}
+</style>
+<form method="get" action="/board/list" class="d-flex searchForm">
+	<select class="form-select" name="searchType">
+		<option value="title">제목</option>
+		<option value="content">내용</option>
+	</select>
+	<input type="text" class="form-control" name="searchKeyword" />
+	<button type="button" class="btn btn-secondary">검색</button>
+</form>
+
+
+
+<script>
+function toggleAll(_target) {
+	const nosList = document.querySelectorAll('input[name=nos]');
+	for(let i = 0; i < nosList.length; i++) {
+		nosList[i].checked = _target.checked;
+	}
+}
+function onDelete() {
+	const nosList = document.querySelectorAll('input[name=nos]:checked');
+	if (nosList.length > 0 && confirm('삭제하시겠습니까?')) return true;
+	return false;
+}
+</script>
+
+
+
 <%@ include file="/inc/footer.jsp" %>

@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet(description = "로그인페이지", urlPatterns = { "/login" })
+@WebServlet(description = "로그인", urlPatterns = { "/login" })
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,22 +28,16 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/member/login.jsp");
-		requestDispatcher.forward(request, response);
-		
-		
+		request.setAttribute("title", "로그인");
+		RequestDispatcher rd = request.getRequestDispatcher("member/login.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		String userId = request.getParameter("userId");
-		String password = request.getParameter("password");
-		
-		
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

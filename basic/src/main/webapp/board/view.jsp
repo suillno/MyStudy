@@ -25,19 +25,19 @@
 </style>
 <article class="container mt-5 mb-5">
 	<div class="b-header">
-		<h2 class="h5">제목 : 제목 출력 영역</h2>
+		<h2 class="h5">제목 : <c:out value="${result.boardTitle}" /></h2>
 		<div class="d-flex justify-content-end">
-			<p class="">작성자 : <span>누군가</span></p>
-			<p class="dt">작성일 : <span>2025-01-1</span></p>
+			<p class="">작성자 : <span><c:out value="${result.boardWriter}" /></span></p>
+			<p class="dt">작성일 : <span><c:out value="${result.regDate}" /></span></p>
 			<p class="">조회수 : <span>1</span></p>
 		</div>
 	</div>
 	<div class="section mb-3">
-		<p class="info">내용출력 영역!</p>
+		<p class="info"><c:out value="${result.boardTitle}" /></p>
 	</div>
 	<div class="text-center">
 		<a href="/board/list" class="btn btn-primary">확인</a>
-		<a href="/board/write?id=1" class="btn btn-secondary">수정</a>
+		<a href="/board/write?id=<c:out value="${result.boardNo}" />" class="btn btn-secondary">수정</a>
 	</div>
 </article>
 <%@ include file="/inc/footer.jsp" %>

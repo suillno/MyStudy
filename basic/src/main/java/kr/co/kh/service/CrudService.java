@@ -4,16 +4,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
+import kr.co.kh.vo.SearchHelper;
+
 public interface CrudService<T> {
 	
-	// insert, select, update, delete
-	int insert(T requstMap);
+	int insert(T requestMap);
 	
-	List<T> selectList(HashMap<String, Object> requstMap);
+	List<T> selectList(SearchHelper searchHelper);
 	
-	Optional<T> selectOne(HashMap<String, Object> requstMap);
+	Optional<T> selectOne(HashMap<String, Object> requestMap);
 	
-	void update(HashMap<String, Object> requstMap);
+	int update(T requestMap);
 	
-	void delete(HashMap<String, Object> requstMap);
+	int delete(HashMap<String, Object> requestMap);
+
 }

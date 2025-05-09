@@ -3,28 +3,18 @@ package kr.co.kh.vo;
 import java.sql.Date;
 
 public class BoardVO {
-	private Long boardNO;
+	
+	private Long boardNo;
 	private String boardTitle;
 	private String boardContent;
-	private String boardWrite;
+	private String boardWriter;
 	private Date regDate;
 	
-	public BoardVO() {
-		super();
+	public Long getBoardNo() {
+		return boardNo;
 	}
-	public BoardVO(Long boardNO, String boardTitle, String boardContent, String boardWrite, Date regDate) {
-		super();
-		this.boardNO = boardNO;
-		this.boardTitle = boardTitle;
-		this.boardContent = boardContent;
-		this.boardWrite = boardWrite;
-		this.regDate = regDate;
-	}
-	public Long getBoardNO() {
-		return boardNO;
-	}
-	public void setBoardNO(Long boardNO) {
-		this.boardNO = boardNO;
+	public void setBoardNo(Long boardNo) {
+		this.boardNo = boardNo;
 	}
 	public String getBoardTitle() {
 		return boardTitle;
@@ -38,11 +28,11 @@ public class BoardVO {
 	public void setBoardContent(String boardContent) {
 		this.boardContent = boardContent;
 	}
-	public String getBoardWrite() {
-		return boardWrite;
+	public String getBoardWriter() {
+		return boardWriter;
 	}
-	public void setBoardWrite(String boardWrite) {
-		this.boardWrite = boardWrite;
+	public void setBoardWriter(String boardWriter) {
+		this.boardWriter = boardWriter;
 	}
 	public Date getRegDate() {
 		return regDate;
@@ -52,9 +42,9 @@ public class BoardVO {
 	}
 	@Override
 	public String toString() {
-		return "BoardVO [boardNO=" + boardNO + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
-				+ ", boardWrite=" + boardWrite + ", regDate=" + regDate + "]";
+		return "BoardVO [boardNo=" + boardNo + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
+				+ ", boardWriter=" + boardWriter + ", regDate=" + regDate + "]";
 	}
-
+	
 	
 }
