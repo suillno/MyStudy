@@ -1,0 +1,10 @@
+cd my-app
+
+프로젝트 시작
+yarn start
+
+vs 코드로 실행
+code .
+
+프로젝트 완료시
+yarn build
